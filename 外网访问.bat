@@ -1,47 +1,47 @@
-ï»¿@echo off
-chcp 65001 >nul
+@echo off
+chcp 936 >nul
 cd /d "%~dp0"
 
-REM ===== ç«¯å£éœ€ä¸ server.bat / å¯åŠ¨ç½‘ç«™.bat ä¿æŒä¸€è‡´ =====
+REM ===== ¶Ë¿ÚĞèÓë server.bat / Æô¶¯ÍøÕ¾.bat ±£³ÖÒ»ÖÂ =====
 set PORT=8080
 set "CFD=bin\cloudflared.exe"
 
 echo ============================================================
-echo   ä¸­æ—»é—¨æˆ· Â· å¤–ç½‘è®¿é—®ï¼ˆCloudflare Tunnelï¼‰
-echo   åŸç†ï¼šæœ¬æœºä¸»åŠ¨å‘å¤–è¿æ¥ï¼Œæ— éœ€å…¬ç½‘IPã€æ— éœ€è·¯ç”±å™¨ç«¯å£æ˜ å°„ï¼Œ
-echo         å¤–éƒ¨ç”¨æˆ·ç» Cloudflare å›æºåˆ°æœ¬æœº 8080ã€‚æ•°æ®å§‹ç»ˆåœ¨ G ç›˜ã€‚
+echo   ÖĞ•FÃÅ»§ ¡¤ ÍâÍø·ÃÎÊ£¨Cloudflare Tunnel£©
+echo   Ô­Àí£º±¾»úÖ÷¶¯ÏòÍâÁ¬½Ó£¬ÎŞĞè¹«ÍøIP¡¢ÎŞĞèÂ·ÓÉÆ÷¶Ë¿ÚÓ³Éä£¬
+echo         Íâ²¿ÓÃ»§¾­ Cloudflare »ØÔ´µ½±¾»ú 8080¡£Êı¾İÊ¼ÖÕÔÚ G ÅÌ¡£
 echo ============================================================
 echo.
 
-REM ===== é¦–æ¬¡è¿è¡Œè‡ªåŠ¨ä¸‹è½½ cloudflaredï¼ˆä»…ç¼ºå¤±æ—¶ï¼‰=====
+REM ===== Ê×´ÎÔËĞĞ×Ô¶¯ÏÂÔØ cloudflared£¨½öÈ±Ê§Ê±£©=====
 if not exist "%CFD%" (
-  echo [1/2] é¦–æ¬¡ä½¿ç”¨éœ€ä¸‹è½½éš§é“å·¥å…· cloudflaredï¼ˆçº¦ 30MBï¼‰...
+  echo [1/2] Ê×´ÎÊ¹ÓÃĞèÏÂÔØËíµÀ¹¤¾ß cloudflared£¨Ô¼ 30MB£©...
   powershell -NoProfile -Command "Invoke-WebRequest -Uri 'https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-windows-amd64.exe' -OutFile 'bin\cloudflared.exe' -TimeoutSec 120"
   echo.
 )
 if not exist "%CFD%" (
-  echo [!] è‡ªåŠ¨ä¸‹è½½å¤±è´¥ï¼ˆæœ¬æœºç½‘ç»œå—é™ï¼‰ã€‚è¯·æ‰‹åŠ¨ä¸‹è½½åæ”¾å…¥ bin\ ç›®å½•ï¼š
+  echo [!] ×Ô¶¯ÏÂÔØÊ§°Ü£¨±¾»úÍøÂçÊÜÏŞ£©¡£ÇëÊÖ¶¯ÏÂÔØºó·ÅÈë bin\ Ä¿Â¼£º
   echo     https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-windows-amd64.exe
-  echo     ä¸‹è½½å®Œæˆåé‡æ–°åŒå‡»æœ¬è„šæœ¬å³å¯ã€‚
+  echo     ÏÂÔØÍê³ÉºóÖØĞÂË«»÷±¾½Å±¾¼´¿É¡£
   pause
   exit /b 1
 )
 
-REM ===== å·²é…ç½®å›ºå®šåŸŸååˆ™èµ°å‘½åéš§é“ï¼Œå¦åˆ™èµ°ä¸´æ—¶åœ°å€ =====
+REM ===== ÒÑÅäÖÃ¹Ì¶¨ÓòÃûÔò×ßÃüÃûËíµÀ£¬·ñÔò×ßÁÙÊ±µØÖ· =====
 if exist "bin\.tunnel_name" (
   set /p TN=<"bin\.tunnel_name"
-  echo [2/2] å·²é…ç½®å›ºå®šåŸŸåï¼Œå¯åŠ¨å‘½åéš§é“ã€Œ%TN%ã€...
-  echo     ç½‘ç«™å°†åœ¨ä»¥ä¸‹åœ°å€é•¿æœŸå¯¹å¤–å¯è®¿é—®ï¼ˆHTTPSï¼‰ï¼š
+  echo [2/2] ÒÑÅäÖÃ¹Ì¶¨ÓòÃû£¬Æô¶¯ÃüÃûËíµÀ¡¸%TN%¡¹...
+  echo     ÍøÕ¾½«ÔÚÒÔÏÂµØÖ·³¤ÆÚ¶ÔÍâ¿É·ÃÎÊ£¨HTTPS£©£º
   echo       https://www.zhongmin-trade.com
   echo       https://zhongmin-trade.com
-  echo     ï¼ˆæŒ‰ Ctrl+C åœæ­¢å¤–ç½‘è®¿é—®ï¼‰
+  echo     £¨°´ Ctrl+C Í£Ö¹ÍâÍø·ÃÎÊ£©
   echo.
   "%CFD%" tunnel run %TN%
 ) else (
-  echo [2/2] å¯åŠ¨â€œä¸´æ—¶å¤–ç½‘åœ°å€â€æ¨¡å¼ï¼ˆå…è´¦å·ã€ç«‹å³å¯ç”¨ï¼Œä½†åœ°å€æ¯æ¬¡ä¼šå˜ï¼‰...
-  echo     ä¸‹æ–¹ä¼šæ˜¾ç¤º https://xxxx.trycloudflared.comï¼Œå‘ç»™å®¢æˆ·å³å¯å¤–ç½‘è®¿é—®ã€‚
-  echo     å¦‚éœ€å›ºå®šåŸŸå zhongmin-trade.comï¼Œè¯·å…ˆåŒå‡»â€œé…ç½®å›ºå®šåŸŸå.batâ€åšä¸€æ¬¡ç™»å½•ã€‚
-  echo     ï¼ˆæŒ‰ Ctrl+C åœæ­¢å¤–ç½‘è®¿é—®ï¼‰
+  echo [2/2] Æô¶¯¡°ÁÙÊ±ÍâÍøµØÖ·¡±Ä£Ê½£¨ÃâÕËºÅ¡¢Á¢¼´¿ÉÓÃ£¬µ«µØÖ·Ã¿´Î»á±ä£©...
+  echo     ÏÂ·½»áÏÔÊ¾ https://xxxx.trycloudflared.com£¬·¢¸ø¿Í»§¼´¿ÉÍâÍø·ÃÎÊ¡£
+  echo     ÈçĞè¹Ì¶¨ÓòÃû zhongmin-trade.com£¬ÇëÏÈË«»÷¡°ÅäÖÃ¹Ì¶¨ÓòÃû.bat¡±×öÒ»´ÎµÇÂ¼¡£
+  echo     £¨°´ Ctrl+C Í£Ö¹ÍâÍø·ÃÎÊ£©
   echo.
   "%CFD%" tunnel --url http://localhost:%PORT%
 )

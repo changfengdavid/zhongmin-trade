@@ -1,5 +1,5 @@
-ï»¿@echo off
-chcp 65001 >nul
+@echo off
+chcp 936 >nul
 setlocal
 set "BIN=G:\ZhongMinWebsite\bin"
 set "EXE=%BIN%\koyeb.exe"
@@ -10,7 +10,7 @@ echo   Zhongmin Web - Auto Install Koyeb CLI
 echo ============================================
 echo.
 
-REM --- è‡ªæ£€ï¼šå·²å­˜åœ¨ koyeb.exe åˆ™éªŒè¯èƒ½å¦è¿è¡Œï¼Œä¸èƒ½åˆ™åˆ é™¤é‡è£… ---
+REM --- ×Ô¼ì£ºÒÑ´æÔÚ koyeb.exe ÔòÑéÖ¤ÄÜ·ñÔËÐÐ£¬²»ÄÜÔòÉ¾³ýÖØ×° ---
 if exist "%EXE%" (
   "%EXE%" version >nul 2>&1
   if not errorlevel 1 (
@@ -71,7 +71,7 @@ echo.
 echo  1) Close this window, open a NEW command prompt (Win+R -> cmd).
 echo  2) Type:  koyeb version   (version shown = success)
 echo  3) Authorize once:  koyeb login   (browser)
-echo  4) Then double-click: G:\ZhongMinWebsite\å‘å¸ƒç½‘ç«™.bat   ï¼ˆä¸€é”®å‘å¸ƒåˆ°å›ºå®šç½‘å€ï¼‰
+echo  4) Then double-click: G:\ZhongMinWebsite\·¢²¼ÍøÕ¾.bat   £¨Ò»¼ü·¢²¼µ½¹Ì¶¨ÍøÖ·£©
 echo.
 echo  Note: if Windows blocks koyeb.exe (SmartScreen) on first run,
 echo        click "More info" -> "Run anyway".

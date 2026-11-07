@@ -1,74 +1,165 @@
-ï»¿@echo off
-chcp 65001 >nul
+@echo off
+chcp 936 >nul
 setlocal EnableDelayedExpansion
 set "ROOT=G:\ZhongMinWebsite"
 cd /d "%ROOT%"
 
 echo ============================================================
-echo   ä¸­æ—»å®˜ç½‘ - ä¸€é”®å‘å¸ƒåˆ° Render äº‘ï¼ˆå›ºå®šç½‘å€ï¼‰
-echo   æœ¬åœ°æ”¹å®Œå†…å®¹ååŒå‡»æœ¬æ–‡ä»¶ï¼Œå³å¯æ›´æ–°çº¿ä¸Šç½‘ç«™
+echo   ÖĞ•F¹ÙÍø - Ò»¼ü·¢²¼µ½ Render ÔÆ
 echo ============================================================
 echo.
 
-where git >nul 2>&1
-if errorlevel 1 (
-  echo [X] æœªæ£€æµ‹åˆ° gitï¼Œè¯·å…ˆå®‰è£… Git for Windowsï¼šhttps://git-scm.com/download/win
-  pause & exit /b 1
+REM ============ 1. ¶¨Î» git£¨ÏµÍ³°æÓÅÏÈ£¬Æä´ÎÄÚÖÃ±ãĞ¯°æ£©============
+set "GIT="
+for /f "delims=" %%i in ('where git 2^>nul') do (
+    if not defined GIT set "GIT=%%i"
 )
+if not defined GIT (
+    for %%p in (
+        "C:\Program Files\Git\cmd\git.exe"
+        "C:\Program Files (x86)\Git\cmd\git.exe"
+        "%LOCALAPPDATA%\Programs\Git\cmd\git.exe"
+    ) do (
+        if not defined GIT if exist %%p set "GIT=%%~p"
+    )
+)
+if not defined GIT (
+    for /d %%d in ("%USERPROFILE%\.workbuddy\binaries\PortableGit\versions\*") do (
+        if not defined GIT if exist "%%~d\mingw64\bin\git.exe" set "GIT=%%~d\mingw64\bin\git.exe"
+    )
+)
+if not defined GIT (
+    echo [X] Î´ÕÒµ½ git¡£
+    echo     Çë°²×° Git for Windows: https://git-scm.com/download/win
+    pause & exit /b 1
+)
+for %%i in ("%GIT%") do set "GITDIR=%%~dpi"
+for %%i in ("%GITDIR%..") do set "GITMINGW=%%~fi"
+for %%i in ("%GITMINGW%\..") do set "GITROOT=%%~fi"
+set "PATH=%GITDIR%;%GITROOT%\usr\bin;%GITROOT%\mingw64\bin;%PATH%"
+set "GIT_SSH_COMMAND=ssh -o StrictHostKeyChecking=accept-new -o BatchMode=yes"
+echo [OK] git : %GIT%
+echo.
 
-REM 1. é¦–æ¬¡åˆå§‹åŒ–ä»“åº“
+REM ============ 2. ³õÊ¼»¯±¾µØ²Ö¿â ============
 if not exist ".git" (
-  echo [1] é¦–æ¬¡åˆå§‹åŒ– git ä»“åº“...
-  git init -b main >nul
-  git config user.email "zhongmin@local"
-  git config user.name "ZhongMin"
-  git add -A
-  git commit -m "init" >nul
-  echo [OK] å·²åˆå§‹åŒ–
+    echo [1] ³õÊ¼»¯ git ²Ö¿â...
+    "%GIT%" init -b main >nul 2>&1
+    "%GIT%" config user.email "zhongmin@local"
+    "%GIT%" config user.name "ZhongMin"
+    echo     Íê³É
 ) else (
-  echo [1] git ä»“åº“å·²å­˜åœ¨
+    echo [1] git ²Ö¿âÒÑ´æÔÚ
 )
 
-REM 2. æ£€æŸ¥è¿œç¨‹ä»“åº“
-git remote get-url origin >nul 2>&1
-if errorlevel 1 (
-  echo.
-  echo [!] è¿˜æ²¡æœ‰é…ç½®è¿œç¨‹ä»“åº“ï¼ˆGitHubï¼‰ã€‚
-  echo     å…ˆåˆ° https://github.com/new æ–°å»ºä¸€ä¸ªç©ºä»“åº“ï¼ˆä¸è¦å‹¾é€‰ READMEï¼‰ï¼Œ
-  echo     å¤åˆ¶å®ƒçš„åœ°å€ï¼ˆå½¢å¦‚ https://github.com/ä½ çš„ç”¨æˆ·å/zhongmin.gitï¼‰ï¼Œç²˜è´´åˆ°ä¸‹é¢ï¼š
-  set /p REMOTE=è¯·è¾“å…¥ä»“åº“åœ°å€: 
-  if not "!REMOTE!"=="" (
-    git remote add origin !REMOTE!
-    echo [OK] å·²è®¾ç½®è¿œç¨‹ä»“åº“
-  ) else (
-    echo [X] æœªè¾“å…¥åœ°å€ï¼Œå·²é€€å‡ºã€‚ & pause & exit /b 1
-  )
+REM ============ 3. °ó¶¨Ô¶³Ì²Ö¿â£¨×Ô¶¯×ª³É 443 ¶Ë¿Ú SSH µØÖ·£©============
+set "TMPD=%TEMP%\zm_pub"
+if not exist "%TMPD%" mkdir "%TMPD%" >nul 2>&1
+set "CURURL="
+"%GIT%" remote get-url origin >"%TMPD%\remote.txt" 2>nul
+if not errorlevel 1 set /p CURURL=<"%TMPD%\remote.txt"
+if not defined CURURL (
+    echo.
+    echo [*] ÉĞÎ´°ó¶¨ GitHub ²Ö¿â
+    echo     µ½ https://github.com/new ĞÂ½¨¿Õ²Ö¿â£¨²»Òª¹´ README / License£©
+    echo     ¸´ÖÆ²Ö¿âµØÖ·Õ³Ìùµ½ÕâÀï£¬https »ò ssh ¸ñÊ½¶¼ĞĞ£¬ÀıÈç£º
+    echo       https://github.com/changfengdavid/zhongmin-trade.git
+    echo.
+    set /p "REMOTE=²Ö¿âµØÖ·: "
+    if "!REMOTE!"=="" (
+        echo [X] Î´ÊäÈëµØÖ·£¬ÒÑÍË³ö¡£
+        pause & exit /b 1
+    )
+    set "R=!REMOTE:.git=!"
+    set "R=!R:https://github.com/=!"
+    set "R=!R:http://github.com/=!"
+    set "R=!R:ssh://git@github.com/=!"
+    set "R=!R:git@github.com:=!"
+    set "SSHURL=ssh://git@ssh.github.com:443/!R!.git"
+    "%GIT%" remote add origin "!SSHURL!"
+    set "CURURL=!SSHURL!"
+    echo [OK] ÒÑ°ó¶¨: !SSHURL!
+) else (
+    echo [2] Ô¶³Ì²Ö¿â: !CURURL!
 )
 
-REM 3. æäº¤æœ€æ–°å†…å®¹
-echo [2] æäº¤æœ€æ–°å†…å®¹...
-git add -A
-git commit -m "update %date% %time%" >nul 2>&1
-if errorlevel 1 ( echo     ï¼ˆæ²¡æœ‰æ–°æ”¹åŠ¨ï¼Œè·³è¿‡æäº¤ï¼‰ ) else ( echo     [OK] å·²æäº¤ )
-git branch -M main >nul 2>&1
-
-REM 4. æ¨é€åˆ°äº‘ç«¯
-echo [3] æ¨é€åˆ° GitHubï¼ˆRender ä¼šè‡ªåŠ¨éƒ¨ç½²ï¼‰...
-git push -u origin main
+REM ============ 4. Ìá½»×îĞÂÄÚÈİ ============
+echo [3] Ìá½»×îĞÂÄÚÈİ...
+"%GIT%" add -A
+"%GIT%" commit -m "update %date% %time%" >nul 2>&1
 if errorlevel 1 (
-  echo.
-  echo [X] æ¨é€å¤±è´¥ï¼Œå¸¸è§åŸå› ï¼š
-  echo     1) GitHub è¿ä¸ä¸Šï¼ˆå›½å†…ç½‘ç»œï¼‰ï¼šéœ€è¦å¼€ä»£ç†/VPN åé‡è¯•ï¼›
-  echo     2) éœ€è¦ç™»å½•ï¼šç”¨æˆ·åå¡« GitHub ç”¨æˆ·åï¼Œå¯†ç å¡« Personal Access Token
-  echo        ï¼ˆåœ¨ GitHub - Settings - Developer settings - Tokens ç”Ÿæˆï¼Œå‹¾é€‰ repoï¼‰ã€‚
-  echo.
-  pause & exit /b 1
+    echo     Ã»ÓĞĞÂ¸Ä¶¯£¬Ìø¹ı
+) else (
+    echo     [OK] ÒÑÌá½»
+)
+"%GIT%" branch -M main >nul 2>&1
+
+REM ============ 5. Ô¤¼ìÁ¬½ÓÓëÊÚÈ¨ ============
+echo [4] ¼ì²é GitHub Á¬½ÓÓëÊÚÈ¨...
+"%GIT%" ls-remote origin >"%TMPD%\ls.txt" 2>&1
+if not errorlevel 1 goto :authed
+findstr /i /c:"Permission denied" "%TMPD%\ls.txt" >nul 2>&1 && goto :needkey
+findstr /i /c:"not found" "%TMPD%\ls.txt" >nul 2>&1 && goto :norepo
+echo.
+echo [X] Á¬²»ÉÏ GitHub¡£
+echo     Ô­ÒòÍ¨³£ÊÇÍøÂç£ºgithub.com µÄ 443 ¶Ë¿ÚÔÚ¹úÄÚ¾­³£±»·âËø¡£
+echo     ±¾½Å±¾ÒÑ×Ô¶¯¸Ä×ß ssh.github.com:443£¬ÈôÈÔÊ§°ÜÇë¿ª´úÀí / VPN ºóÖØÊÔ¡£
+echo.
+type "%TMPD%\ls.txt"
+pause & exit /b 1
+
+:needkey
+echo.
+echo [*] ÉĞÎ´ÊÚÈ¨£ºSSH ¹«Ô¿»¹Ã»Ìí¼Óµ½ GitHub¡£
+echo.
+echo     µÚ 1 ²½  ¸´ÖÆÏÂÃæÕâÒ»ÕûĞĞ¹«Ô¿
+echo ------------------------------------------------------------
+if exist "%USERPROFILE%\.ssh\id_ed25519.pub" (
+    type "%USERPROFILE%\.ssh\id_ed25519.pub"
+) else (
+    echo     ±¾»ú»¹Ã»ÓĞÃÜÔ¿£¬ÕıÔÚÉú³É...
+    ssh-keygen -t ed25519 -f "%USERPROFILE%\.ssh\id_ed25519" -N "" -C "zhongmin-render" >nul 2>&1
+    type "%USERPROFILE%\.ssh\id_ed25519.pub"
+)
+echo ------------------------------------------------------------
+echo     µÚ 2 ²½  ´ò¿ª https://github.com/settings/ssh/new
+echo     µÚ 3 ²½  Title Ëæ±ãÌî£¨Èç zhongmin£©£¬Key Õ³ÌùÉÏÃæµÄÄÚÈİ£¬µã Add SSH key
+echo     µÚ 4 ²½  ÖØĞÂË«»÷±¾½Å±¾
+echo.
+pause & exit /b 1
+
+:norepo
+echo.
+echo [*] ²Ö¿â²»´æÔÚ»òÁ´½Ó²»¶Ô¡£
+echo     ÇëÏÈµ½ https://github.com/new ĞÂ½¨¿Õ²Ö¿â£¨²»Òª¹´ README / License£©¡£
+echo     µ±Ç°°ó¶¨µÄÊÇ: !CURURL!
+echo.
+echo     Òª¸ÄµØÖ·£¬ÃüÁîĞĞÖ´ĞĞÏÂÃæÕâ¾ä£¨»»³ÉÄãµÄÓÃ»§ÃûºÍ²Ö¿âÃû£©£º
+echo       "%GIT%" remote set-url origin ssh://git@ssh.github.com:443/ÓÃ»§Ãû/²Ö¿âÃû.git
+echo.
+pause & exit /b 1
+
+:authed
+echo     [OK] Á¬½ÓÓëÊÚÈ¨Õı³£
+
+REM ============ 6. ÍÆËÍ ============
+echo [5] ÍÆËÍµ½ GitHub...
+"%GIT%" push -u origin main
+if errorlevel 1 (
+    echo.
+    echo [X] ÍÆËÍÊ§°Ü£¬³£¼ûÔ­Òò£º
+    echo   1. ÍøÂçÖĞ¶Ï£º¿ª´úÀí / VPN ºóÖØÊÔ
+    echo   2. Ã»ÓĞĞ´È¨ÏŞ£ºÈ·ÈÏ²Ö¿âÊôÓÚµ±Ç° GitHub ÕËºÅ
+    echo   3. ²Ö¿âµØÖ·Ğ´´í£ºÓÃÏÂÃæµÄÃüÁî¸ÄµØÖ·ºóÖØÅÜ
+    echo      "%GIT%" remote set-url origin ssh://git@ssh.github.com:443/ÓÃ»§Ãû/²Ö¿âÃû.git
+    echo.
+    pause & exit /b 1
 )
 
 echo.
 echo ============================================================
-echo   [OK] å·²æ¨é€ï¼Render ä¼šè‡ªåŠ¨é‡æ–°éƒ¨ç½²ï¼ˆçº¦ 1-2 åˆ†é’Ÿï¼‰ã€‚
-echo   éƒ¨ç½²å®Œæˆåï¼Œåˆ·æ–°ä½ çš„ Render ç½‘å€å³ä¸ºæœ€æ–°å†…å®¹ã€‚
+echo   [OK] ÍÆËÍÍê³É
+echo   Render »á×Ô¶¯ÖØĞÂ²¿Êğ£¬Ô¼ 1-2 ·ÖÖÓºóÏßÉÏ¼´Îª×îĞÂÄÚÈİ
 echo ============================================================
 echo.
 pause

@@ -1,47 +1,47 @@
-ï»¿@echo off
-chcp 65001 >nul
+@echo off
+chcp 936 >nul
 cd /d "%~dp0"
 
 set "CFD=bin\cloudflared.exe"
 set "TUNNEL_NAME=zhongmin"
 set "DOMAIN=zhongmin-trade.com"
 
-REM ===== ç¡®ä¿å·¥å…·å­˜åœ¨ =====
+REM ===== È·±£¹¤¾ß´æÔÚ =====
 if not exist "%CFD%" (
-  echo æ­£åœ¨ä¸‹è½½ cloudflared ...
+  echo ÕýÔÚÏÂÔØ cloudflared ...
   powershell -NoProfile -Command "Invoke-WebRequest -Uri 'https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-windows-amd64.exe' -OutFile 'bin\cloudflared.exe' -TimeoutSec 120"
 )
 if not exist "%CFD%" (
-  echo [!] ä¸‹è½½å¤±è´¥ï¼Œè¯·æ‰‹åŠ¨ä¸‹è½½åŽé‡è·‘æœ¬è„šæœ¬ã€‚
+  echo [!] ÏÂÔØÊ§°Ü£¬ÇëÊÖ¶¯ÏÂÔØºóÖØÅÜ±¾½Å±¾¡£
   pause
   exit /b 1
 )
 
 echo ============================================================
-echo   ä¸€æ¬¡æ€§é…ç½®ï¼šæŠŠ zhongmin-trade.com å˜æˆã€å›ºå®šã€‘å¤–ç½‘åŸŸå
-echo   å‰æï¼šåŸŸå zhongmin-trade.com å·²åœ¨ä½ çš„ Cloudflare è´¦æˆ·æŽ¥å…¥
-echo         ï¼ˆåœ¨ Cloudflare æ·»åŠ ç«™ç‚¹ã€æŒ‰æç¤ºæ”¹ NS å³å¯ï¼Œå…è´¹ï¼‰
-echo   æœ¬æ­¥éª¤ä¼šæ‰“å¼€æµè§ˆå™¨è®©ä½ ç™»å½• Cloudflareï¼ˆå…è´¹è´¦å·ï¼‰ã€‚
+echo   Ò»´ÎÐÔÅäÖÃ£º°Ñ zhongmin-trade.com ±ä³É¡¾¹Ì¶¨¡¿ÍâÍøÓòÃû
+echo   Ç°Ìá£ºÓòÃû zhongmin-trade.com ÒÑÔÚÄãµÄ Cloudflare ÕË»§½ÓÈë
+echo         £¨ÔÚ Cloudflare Ìí¼ÓÕ¾µã¡¢°´ÌáÊ¾¸Ä NS ¼´¿É£¬Ãâ·Ñ£©
+echo   ±¾²½Öè»á´ò¿ªä¯ÀÀÆ÷ÈÃÄãµÇÂ¼ Cloudflare£¨Ãâ·ÑÕËºÅ£©¡£
 echo ============================================================
 echo.
-echo [1/4] ç™»å½• Cloudflareï¼ˆæµè§ˆå™¨è·³è½¬æŽˆæƒï¼Œé€‰ zhongmin-trade.com æ‰€åœ¨è´¦æˆ·ï¼‰...
+echo [1/4] µÇÂ¼ Cloudflare£¨ä¯ÀÀÆ÷Ìø×ªÊÚÈ¨£¬Ñ¡ zhongmin-trade.com ËùÔÚÕË»§£©...
 "%CFD%" login
 echo.
-echo [2/4] åˆ›å»ºå‘½åéš§é“ã€Œ%TUNNEL_NAME%ã€...
+echo [2/4] ´´½¨ÃüÃûËíµÀ¡¸%TUNNEL_NAME%¡¹...
 "%CFD%" tunnel create %TUNNEL_NAME%
 echo.
-echo [3/4] å°†åŸŸåæŒ‡å‘éš§é“ï¼ˆwww + æ ¹åŸŸåï¼‰...
+echo [3/4] ½«ÓòÃûÖ¸ÏòËíµÀ£¨www + ¸ùÓòÃû£©...
 "%CFD%" tunnel route dns %TUNNEL_NAME% www.%DOMAIN%
 "%CFD%" tunnel route dns %TUNNEL_NAME% %DOMAIN%
 echo.
-echo [4/4] è®°å½•éš§é“åï¼Œä¾›â€œå¤–ç½‘è®¿é—®.bat / å¼€æœºè‡ªå¯â€ä½¿ç”¨...
+echo [4/4] ¼ÇÂ¼ËíµÀÃû£¬¹©¡°ÍâÍø·ÃÎÊ.bat / ¿ª»ú×ÔÆô¡±Ê¹ÓÃ...
 (echo %TUNNEL_NAME%)>bin\.tunnel_name
 echo.
 echo ============================================================
-echo   é…ç½®å®Œæˆï¼
-echo   ä»¥åŽåŒå‡»â€œå¤–ç½‘è®¿é—®.batâ€æˆ–å¼€æœºè‡ªå¯ï¼Œç½‘ç«™å³é•¿æœŸåœ¨ä»¥ä¸‹åœ°å€å¯¹å¤–ï¼š
+echo   ÅäÖÃÍê³É£¡
+echo   ÒÔºóË«»÷¡°ÍâÍø·ÃÎÊ.bat¡±»ò¿ª»ú×ÔÆô£¬ÍøÕ¾¼´³¤ÆÚÔÚÒÔÏÂµØÖ·¶ÔÍâ£º
 echo     https://www.zhongmin-trade.com
 echo     https://zhongmin-trade.com
-echo   ï¼ˆå…¨ç¨‹ HTTPS åŠ å¯†ï¼Œåœ°å€æ°¸ä¹…ä¸å˜ï¼‰
+echo   £¨È«³Ì HTTPS ¼ÓÃÜ£¬µØÖ·ÓÀ¾Ã²»±ä£©
 echo ============================================================
 pause

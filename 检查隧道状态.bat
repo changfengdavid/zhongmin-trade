@@ -1,5 +1,5 @@
-ï»¿@echo off
-chcp 65001 >nul
+@echo off
+chcp 936 >nul
 setlocal EnableDelayedExpansion
 set "ROOT=G:\ZhongMinWebsite"
 set "BIN=%ROOT%\bin"
@@ -9,40 +9,40 @@ set "ADDR=http://localhost:8080"
 cd /d "%ROOT%"
 
 echo ============================================================
-echo   ä¸­æ—»å®˜ç½‘ - éš§é“çŠ¶æ€è‡ªæ£€
+echo   ÖÐ•F¹ÙÍø - ËíµÀ×´Ì¬×Ô¼ì
 echo ============================================================
 echo.
 
-echo [1] cloudflared è¿›ç¨‹æ˜¯å¦è¿è¡Œï¼š
+echo [1] cloudflared ½ø³ÌÊÇ·ñÔËÐÐ£º
 tasklist 2>nul | findstr /i "cloudflared.exe" >nul
-if errorlevel 1 ( echo     [X] æœªè¿è¡Œ â€”â€” éš§é“æ˜¯æ­»çš„ï¼Œå¤–ç½‘ä¸€å®šæ‰“ä¸å¼€ ) else ( echo     [OK] æ­£åœ¨è¿è¡Œ )
+if errorlevel 1 ( echo     [X] Î´ÔËÐÐ ¡ª¡ª ËíµÀÊÇËÀµÄ£¬ÍâÍøÒ»¶¨´ò²»¿ª ) else ( echo     [OK] ÕýÔÚÔËÐÐ )
 echo.
 
-echo [2] æœ¬æœºå®˜ç½‘ 8080 æ˜¯å¦å“åº”ï¼š
+echo [2] ±¾»ú¹ÙÍø 8080 ÊÇ·ñÏìÓ¦£º
 curl -s -o nul -w "local_http=%{http_code}" %ADDR% >nul 2>&1
-if errorlevel 1 ( echo     [X] 8080 æ— å“åº” â€”â€” æºç«™æ²¡å¼€ï¼ŒCloudflare ä¼šè¿”å›žé”™è¯¯ ) else ( echo     [OK] 8080 æ­£å¸¸å“åº” )
+if errorlevel 1 ( echo     [X] 8080 ÎÞÏìÓ¦ ¡ª¡ª Ô´Õ¾Ã»¿ª£¬Cloudflare »á·µ»Ø´íÎó ) else ( echo     [OK] 8080 Õý³£ÏìÓ¦ )
 echo.
 
-echo [3] å‘½åéš§é“ä¸Žè·¯ç”±ï¼ˆéœ€å·²ç™»å½• Cloudflareï¼‰ï¼š
+echo [3] ÃüÃûËíµÀÓëÂ·ÓÉ£¨ÐèÒÑµÇÂ¼ Cloudflare£©£º
 if exist "%CF%" (
   echo     --- tunnel list ---
   "%CF%" tunnel list 2>&1 | more
   echo     --- route list ---
   "%CF%" tunnel route list 2>&1 | more
-) else ( echo     [X] ç¼ºå°‘ cloudflared.exe )
+) else ( echo     [X] È±ÉÙ cloudflared.exe )
 echo.
 
-echo [4] å¤–ç½‘åœ°å€è¿žé€šæ€§æµ‹è¯•ï¼ˆå¯èƒ½éœ€è¦ç­‰ 10~30 ç§’æ‰é€šï¼‰ï¼š
-echo     æ­£åœ¨è¯·æ±‚ https://%HOST%/ ...
+echo [4] ÍâÍøµØÖ·Á¬Í¨ÐÔ²âÊÔ£¨¿ÉÄÜÐèÒªµÈ 10~30 Ãë²ÅÍ¨£©£º
+echo     ÕýÔÚÇëÇó https://%HOST%/ ...
 curl -s -o nul -w "public_http=%{http_code} time=%{time_total}s\n" --max-time 15 "https://%HOST%/" 2>&1
-if errorlevel 1 ( echo     [!] å¤–ç½‘è¯·æ±‚å¤±è´¥ï¼ˆéš§é“æœªè¿ž/æœªå°±ç»ª/DNS æœªç”Ÿæ•ˆï¼‰ ) else ( echo     [OK] å¤–ç½‘åœ°å€å¯è®¿é—® )
+if errorlevel 1 ( echo     [!] ÍâÍøÇëÇóÊ§°Ü£¨ËíµÀÎ´Á¬/Î´¾ÍÐ÷/DNS Î´ÉúÐ§£© ) else ( echo     [OK] ÍâÍøµØÖ·¿É·ÃÎÊ )
 echo.
 
 echo ============================================================
-echo   æŽ’é”™æŒ‡å¼•ï¼š
-echo   - è¿›ç¨‹æœªè¿è¡Œ æˆ– å¤–ç½‘ä¸é€šï¼šåŒå‡» å›ºå®šéš§é“.bat é‡å¯ï¼ˆä¼šæ€æ—§è¿›ç¨‹+æ–°é…ç½®ï¼‰
-echo   - 8080 æ— å“åº”ï¼šå…ˆåŒå‡» å¯åŠ¨ç½‘ç«™.bat æŠŠå®˜ç½‘èµ·èµ·æ¥
-echo   - ä»ä¸è¡Œï¼šæ‰“å¼€â€œä¸­æ—»å›ºå®šéš§é“â€é»‘è‰²çª—å£ï¼ŒæŠŠé‡Œé¢çº¢è‰²æŠ¥é”™å‘æˆ‘
+echo   ÅÅ´íÖ¸Òý£º
+echo   - ½ø³ÌÎ´ÔËÐÐ »ò ÍâÍø²»Í¨£ºË«»÷ ¹Ì¶¨ËíµÀ.bat ÖØÆô£¨»áÉ±¾É½ø³Ì+ÐÂÅäÖÃ£©
+echo   - 8080 ÎÞÏìÓ¦£ºÏÈË«»÷ Æô¶¯ÍøÕ¾.bat °Ñ¹ÙÍøÆðÆðÀ´
+echo   - ÈÔ²»ÐÐ£º´ò¿ª¡°ÖÐ•F¹Ì¶¨ËíµÀ¡±ºÚÉ«´°¿Ú£¬°ÑÀïÃæºìÉ«±¨´í·¢ÎÒ
 echo ============================================================
 echo.
 pause

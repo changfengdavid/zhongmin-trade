@@ -1,11 +1,11 @@
-ï»¿@echo off
-chcp 65001 >nul
+@echo off
+chcp 936 >nul
 cd /d "%~dp0"
 
-REM ===== ç«¯å£ï¼ˆå¦‚éœ€ä¿®æ”¹å¤–ç½‘/å†…ç½‘è®¿é—®ç«¯å£ï¼Œæ”¹è¿™é‡Œï¼‰=====
+REM ===== ¶Ë¿Ú£¨ÈçĞèĞŞ¸ÄÍâÍø/ÄÚÍø·ÃÎÊ¶Ë¿Ú£¬¸ÄÕâÀï£©=====
 set PORT=8080
 
-REM ===== è‡ªåŠ¨å®šä½ node è¿è¡Œç¯å¢ƒ =====
+REM ===== ×Ô¶¯¶¨Î» node ÔËĞĞ»·¾³ =====
 set "NODE_EXE=node"
 if exist "%USERPROFILE%\.workbuddy\binaries\node\versions\22.12.0\node.exe" (
   set "NODE_EXE=%USERPROFILE%\.workbuddy\binaries\node\versions\22.12.0\node.exe"
@@ -16,10 +16,10 @@ if exist "%USERPROFILE%\.workbuddy\binaries\node\versions\22.12.0\node.exe" (
 )
 
 echo ============================================
-echo   é’å²›ä¸­æ—»å›½é™…è´¸æ˜“æœ‰é™å…¬å¸ é—¨æˆ·
-echo   æœ¬æœºè®¿é—®ï¼š http://localhost:%PORT%
-echo   åå°ç®¡ç†ï¼š http://localhost:%PORT%/admin/
-echo   é»˜è®¤ç®¡ç†å‘˜å¯†ç ï¼š admin123 ï¼ˆè¯·å°½å¿«ä¿®æ”¹ï¼‰
+echo   ÇàµºÖĞ•F¹ú¼ÊÃ³Ò×ÓĞÏŞ¹«Ë¾ ÃÅ»§
+echo   ±¾»ú·ÃÎÊ£º http://localhost:%PORT%
+echo   ºóÌ¨¹ÜÀí£º http://localhost:%PORT%/admin/
+echo   Ä¬ÈÏ¹ÜÀíÔ±ÃÜÂë£º admin123 £¨Çë¾¡¿ìĞŞ¸Ä£©
 echo ============================================
 echo.
 "%NODE_EXE%" server.js

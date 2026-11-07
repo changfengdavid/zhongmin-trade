@@ -1,14 +1,14 @@
-ï»¿@echo off
-chcp 65001 >nul
+@echo off
+chcp 936 >nul
 cd /d "%~dp0"
 
 echo ============================================================
-echo   ä¸­æ—»é—¨æˆ· Â· å‘å¸ƒå‰æ£€æŸ¥
-echo   æœ¬åœ°æ”¹å®Œå†…å®¹åï¼ŒåŒå‡»æœ¬è„šæœ¬ç¡®è®¤â€œå¯å‘å¸ƒâ€ï¼Œå†å»å®¢æˆ·ç«¯ä¸€é”®å‘å¸ƒ
+echo   ÖĞ•FÃÅ»§ ¡¤ ·¢²¼Ç°¼ì²é
+echo   ±¾µØ¸ÄÍêÄÚÈİºó£¬Ë«»÷±¾½Å±¾È·ÈÏ¡°¿É·¢²¼¡±£¬ÔÙÈ¥¿Í»§¶ËÒ»¼ü·¢²¼
 echo ============================================================
 echo.
 
-REM ===== 1. å®šä½ node =====
+REM ===== 1. ¶¨Î» node =====
 set "NODE_EXE="
 where node >nul 2>nul && set "NODE_EXE=node"
 if not defined NODE_EXE (
@@ -22,65 +22,65 @@ if not defined NODE_EXE (
   )
 )
 if not defined NODE_EXE (
-  echo [X] æœªæ‰¾åˆ° Node.jsï¼Œè¯·å…ˆå®‰è£… Node æˆ–æ‰“å¼€ WorkBuddy å®¢æˆ·ç«¯åå†è¯•ã€‚
+  echo [X] Î´ÕÒµ½ Node.js£¬ÇëÏÈ°²×° Node »ò´ò¿ª WorkBuddy ¿Í»§¶ËºóÔÙÊÔ¡£
   pause & exit /b 1
 )
-echo [OK] è¿è¡Œç¯å¢ƒï¼š%NODE_EXE%
+echo [OK] ÔËĞĞ»·¾³£º%NODE_EXE%
 
-REM ===== 2. config.json åˆæ³•æ€§ + å†…å®¹æ¦‚è§ˆ =====
+REM ===== 2. config.json ºÏ·¨ĞÔ + ÄÚÈİ¸ÅÀÀ =====
 echo.
-echo [2/6] æ ¡éªŒ data\config.json ...
+echo [2/6] Ğ£Ñé data\config.json ...
 "%NODE_EXE%" -e "JSON.parse(require('fs').readFileSync('data/config.json','utf8'));" >nul 2>&1
 if errorlevel 1 (
-  echo   [X] config.json ä¸æ˜¯åˆæ³• JSONï¼ˆå¯èƒ½åå°ä¿å­˜è¢«ä¸­æ–­ï¼‰ï¼Œè¯·åœ¨åå°é‡æ–°ä¿å­˜æˆ–æ¢å¤å¤‡ä»½ã€‚
+  echo   [X] config.json ²»ÊÇºÏ·¨ JSON£¨¿ÉÄÜºóÌ¨±£´æ±»ÖĞ¶Ï£©£¬ÇëÔÚºóÌ¨ÖØĞÂ±£´æ»ò»Ö¸´±¸·İ¡£
   pause & exit /b 1
 )
-echo   [OK] config.json åˆæ³•
-"%NODE_EXE%" -e "const c=JSON.parse(require('fs').readFileSync('data/config.json','utf8'));const s=c.site.contact;console.log('   å…¬å¸:',c.site.name.zh,'/ ',c.site.name.en);console.log('   äº§å“',c.products.length,'æ¡ | æ–°é—»',c.news.length,'æ¡ | ä¼™ä¼´',c.partners.length,'æ¡ | èµ„è´¨',c.certificates.length,'æ¡');console.log('   å®˜ç½‘ç½‘å€:',s.website||'(æœªè®¾)');console.log('   è”ç³»é‚®ç®±:',s.email||'(æœªè®¾)');console.log('   è”ç³»ç”µè¯:',s.phone||'(å ä½ï¼Œå¾…æ›¿æ¢)');"
+echo   [OK] config.json ºÏ·¨
+"%NODE_EXE%" -e "const c=JSON.parse(require('fs').readFileSync('data/config.json','utf8'));const s=c.site.contact;console.log('   ¹«Ë¾:',c.site.name.zh,'/ ',c.site.name.en);console.log('   ²úÆ·',c.products.length,'Ìõ | ĞÂÎÅ',c.news.length,'Ìõ | »ï°é',c.partners.length,'Ìõ | ×ÊÖÊ',c.certificates.length,'Ìõ');console.log('   ¹ÙÍøÍøÖ·:',s.website||'(Î´Éè)');console.log('   ÁªÏµÓÊÏä:',s.email||'(Î´Éè)');console.log('   ÁªÏµµç»°:',s.phone||'(Õ¼Î»£¬´ıÌæ»»)');"
 
-REM ===== 3. æ ¸å¿ƒæ–‡ä»¶ =====
+REM ===== 3. ºËĞÄÎÄ¼ş =====
 echo.
-echo [3/6] æ£€æŸ¥æ ¸å¿ƒæ–‡ä»¶ ...
+echo [3/6] ¼ì²éºËĞÄÎÄ¼ş ...
 set "FILES_OK=1"
-if not exist server.js (echo   [X] ç¼ºå°‘ server.js & set FILES_OK=0)
-if not exist package.json (echo   [X] ç¼ºå°‘ package.json & set FILES_OK=0)
-if not exist public\index.html (echo   [X] ç¼ºå°‘ public\index.html & set FILES_OK=0)
-if not exist public\admin\index.html (echo   [X] ç¼ºå°‘ public\admin\index.html & set FILES_OK=0)
-if %FILES_OK%==1 echo   [OK] server.js / package.json / å‰ç«¯ / åå° é½å…¨
+if not exist server.js (echo   [X] È±ÉÙ server.js & set FILES_OK=0)
+if not exist package.json (echo   [X] È±ÉÙ package.json & set FILES_OK=0)
+if not exist public\index.html (echo   [X] È±ÉÙ public\index.html & set FILES_OK=0)
+if not exist public\admin\index.html (echo   [X] È±ÉÙ public\admin\index.html & set FILES_OK=0)
+if %FILES_OK%==1 echo   [OK] server.js / package.json / Ç°¶Ë / ºóÌ¨ ÆëÈ«
 
-REM ===== 4. ä¾èµ–æ˜¯å¦å®‰è£…ï¼ˆå½±å“äº‘ç«¯ install é€Ÿåº¦ï¼‰=====
+REM ===== 4. ÒÀÀµÊÇ·ñ°²×°£¨Ó°ÏìÔÆ¶Ë install ËÙ¶È£©=====
 echo.
-echo [4/6] æ£€æŸ¥ä¾èµ– node_modules ...
+echo [4/6] ¼ì²éÒÀÀµ node_modules ...
 if exist node_modules\express (
-  echo   [OK] express å·²å®‰è£…ï¼ˆäº‘ç«¯å®‰è£…ä¼šæ›´å¿«/æ›´ç¨³å®šï¼‰
+  echo   [OK] express ÒÑ°²×°£¨ÔÆ¶Ë°²×°»á¸ü¿ì/¸üÎÈ¶¨£©
 ) else (
-  echo   [!] node_modules ç¼ºå¤± â€”â€” ä¸å½±å“å‘å¸ƒï¼Œä½†äº‘ç«¯é¦–æ¬¡ä¼šæ‰§è¡Œ npm installï¼Œç¨æ…¢ã€‚
+  echo   [!] node_modules È±Ê§ ¡ª¡ª ²»Ó°Ïì·¢²¼£¬µ«ÔÆ¶ËÊ×´Î»áÖ´ĞĞ npm install£¬ÉÔÂı¡£
 )
 
-REM ===== 5. ä¸Šä¼ å›¾ç‰‡ç›®å½• =====
+REM ===== 5. ÉÏ´«Í¼Æ¬Ä¿Â¼ =====
 echo.
-echo [5/6] æ£€æŸ¥ public\uploads ...
+echo [5/6] ¼ì²é public\uploads ...
 if not exist public\uploads mkdir public\uploads
-echo   [OK] public\uploads å­˜åœ¨ï¼ˆåå°ä¸Šä¼ çš„å›¾ç‰‡éƒ½åœ¨è¿™ï¼‰
+echo   [OK] public\uploads ´æÔÚ£¨ºóÌ¨ÉÏ´«µÄÍ¼Æ¬¶¼ÔÚÕâ£©
 
-REM ===== 6. ç«¯å£æç¤ºï¼ˆéé˜»æ–­ï¼‰=====
+REM ===== 6. ¶Ë¿ÚÌáÊ¾£¨·Ç×è¶Ï£©=====
 echo.
-echo [6/6] ç«¯å£æç¤º ...
-echo   [æç¤º] å‘å¸ƒåˆ°äº‘ç«¯åï¼Œäº‘ä¸Šç«™ç‚¹ç‹¬ç«‹è¿è¡Œåœ¨ 8080ï¼Œä¸æœ¬åœ° 8080 äº’ä¸å†²çªã€‚
-echo   [æç¤º] æœ¬åœ° 8080 æ˜¯å¦å¼€ç€éƒ½ä¸å½±å“äº‘ç«¯å‘å¸ƒï¼›ä½†è‹¥è¦æœ¬åœ°é¢„è§ˆè¯·å…ˆåŒå‡» å¯åŠ¨ç½‘ç«™.batã€‚
+echo [6/6] ¶Ë¿ÚÌáÊ¾ ...
+echo   [ÌáÊ¾] ·¢²¼µ½ÔÆ¶Ëºó£¬ÔÆÉÏÕ¾µã¶ÀÁ¢ÔËĞĞÔÚ 8080£¬Óë±¾µØ 8080 »¥²»³åÍ»¡£
+echo   [ÌáÊ¾] ±¾µØ 8080 ÊÇ·ñ¿ª×Å¶¼²»Ó°ÏìÔÆ¶Ë·¢²¼£»µ«ÈôÒª±¾µØÔ¤ÀÀÇëÏÈË«»÷ Æô¶¯ÍøÕ¾.bat¡£
 
-REM ===== ç”Ÿæˆå‘å¸ƒæ‘˜è¦ =====
-"%NODE_EXE%" -e "const c=JSON.parse(require('fs').readFileSync('data/config.json','utf8'));const fs=require('fs');const t=new Date().toLocaleString('zh-CN');const lines=['ä¸­æ—»é—¨æˆ· å‘å¸ƒæ‘˜è¦','ç”Ÿæˆæ—¶é—´: '+t,'','å…¬å¸: '+c.site.name.zh+' / '+c.site.name.en,'å®˜ç½‘: '+(c.site.contact.website||'(æœªè®¾)'),'äº§å“: '+c.products.length+' | æ–°é—»: '+c.news.length+' | ä¼™ä¼´: '+c.partners.length+' | èµ„è´¨: '+c.certificates.length,'','è¯´æ˜: æœ¬æ–‡ä»¶ç”± å‘å¸ƒå‰æ£€æŸ¥.bat ç”Ÿæˆã€‚Gç›˜ä¸ºæºï¼Œäº‘ç«¯ä¸ºé•œåƒï¼›æœ¬åœ°æ”¹å®ŒåŠ¡å¿…â€œé‡æ–°å‘å¸ƒâ€äº‘ç«¯æ‰æ›´æ–°ã€‚'];fs.writeFileSync('å‘å¸ƒæ‘˜è¦.txt',lines.join('\n'),'utf8');"
+REM ===== Éú³É·¢²¼ÕªÒª =====
+"%NODE_EXE%" -e "const c=JSON.parse(require('fs').readFileSync('data/config.json','utf8'));const fs=require('fs');const t=new Date().toLocaleString('zh-CN');const lines=['ÖĞ•FÃÅ»§ ·¢²¼ÕªÒª','Éú³ÉÊ±¼ä: '+t,'','¹«Ë¾: '+c.site.name.zh+' / '+c.site.name.en,'¹ÙÍø: '+(c.site.contact.website||'(Î´Éè)'),'²úÆ·: '+c.products.length+' | ĞÂÎÅ: '+c.news.length+' | »ï°é: '+c.partners.length+' | ×ÊÖÊ: '+c.certificates.length,'','ËµÃ÷: ±¾ÎÄ¼şÓÉ ·¢²¼Ç°¼ì²é.bat Éú³É¡£GÅÌÎªÔ´£¬ÔÆ¶ËÎª¾µÏñ£»±¾µØ¸ÄÍêÎñ±Ø¡°ÖØĞÂ·¢²¼¡±ÔÆ¶Ë²Å¸üĞÂ¡£'];fs.writeFileSync('·¢²¼ÕªÒª.txt',lines.join('\n'),'utf8');"
 echo.
-echo   å·²ç”Ÿæˆ å‘å¸ƒæ‘˜è¦.txtï¼ˆå¯å¤‡æŸ¥â€œæœ¬æ¬¡å‘å¸ƒäº†ä»€ä¹ˆâ€ï¼‰
+echo   ÒÑÉú³É ·¢²¼ÕªÒª.txt£¨¿É±¸²é¡°±¾´Î·¢²¼ÁËÊ²Ã´¡±£©
 
-REM ===== æ€»ç»“ =====
+REM ===== ×Ü½á =====
 echo.
 echo ============================================================
-echo   æ£€æŸ¥å®Œæˆã€‚è‹¥ä¸Šé¢æ²¡æœ‰ [X]ï¼Œå³å¯å» WorkBuddy å®¢æˆ·ç«¯ä¸€é”®å‘å¸ƒï¼š
-echo     æ‰“å¼€ WorkBuddy â†’ æ‰¾åˆ° G:\ZhongMinWebsite â†’ ã€Œå‘å¸ƒä¸ºåº”ç”¨ã€
-echo     æˆ–ï¼šè®¾ç½® â†’ æ•°æ®ç®¡ç† â†’ æˆ‘å‘å¸ƒçš„åº”ç”¨ â†’ ä¸­æ—»é—¨æˆ· â†’ é‡æ–°éƒ¨ç½²
-echo   è¯¦ç»†æ­¥éª¤è§ é‡æ–°å‘å¸ƒæŒ‡å—.md
+echo   ¼ì²éÍê³É¡£ÈôÉÏÃæÃ»ÓĞ [X]£¬¼´¿ÉÈ¥ WorkBuddy ¿Í»§¶ËÒ»¼ü·¢²¼£º
+echo     ´ò¿ª WorkBuddy ¡ú ÕÒµ½ G:\ZhongMinWebsite ¡ú ¡¸·¢²¼ÎªÓ¦ÓÃ¡¹
+echo     »ò£ºÉèÖÃ ¡ú Êı¾İ¹ÜÀí ¡ú ÎÒ·¢²¼µÄÓ¦ÓÃ ¡ú ÖĞ•FÃÅ»§ ¡ú ÖØĞÂ²¿Êğ
+echo   ÏêÏ¸²½Öè¼û ÖØĞÂ·¢²¼Ö¸ÄÏ.md
 echo ============================================================
 echo.
 pause

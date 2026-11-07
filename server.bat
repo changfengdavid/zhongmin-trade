@@ -1,5 +1,5 @@
-﻿@echo off
-chcp 65001 >nul
+@echo off
+chcp 936 >nul
 cd /d "%~dp0"
 
 set PORT=8080

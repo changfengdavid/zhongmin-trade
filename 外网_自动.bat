@@ -1,13 +1,13 @@
-ï»¿@echo off
-chcp 65001 >nul
+@echo off
+chcp 936 >nul
 cd /d "%~dp0"
 
 set PORT=8080
 set "CFD=bin\cloudflared.exe"
 
-REM ===== é¦–æ¬¡è¿è¡Œè‡ªåŠ¨ä¸‹è½½ cloudflaredï¼ˆå¤šé•œåƒå…œåº•ï¼Œä»…ç¼ºå¤±æ—¶ï¼‰=====
+REM ===== Ê×´ÎÔËĞĞ×Ô¶¯ÏÂÔØ cloudflared£¨¶à¾µÏñ¶µµ×£¬½öÈ±Ê§Ê±£©=====
 if exist "%CFD%" goto :have
-echo [1/2] é¦–æ¬¡éœ€ä¸‹è½½éš§é“å·¥å…· cloudflaredï¼ˆçº¦ 30MBï¼‰ï¼Œè‡ªåŠ¨å°è¯•å¤šä¸ªä¸‹è½½æº...
+echo [1/2] Ê×´ÎĞèÏÂÔØËíµÀ¹¤¾ß cloudflared£¨Ô¼ 30MB£©£¬×Ô¶¯³¢ÊÔ¶à¸öÏÂÔØÔ´...
 set "OK=0"
 call :trydl "https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-windows-amd64.exe"
 if "%OK%"=="1" goto :have
@@ -22,40 +22,40 @@ if "%OK%"=="1" goto :have
 call :trydl "https://github.moeyy.xyz/https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-windows-amd64.exe"
 if "%OK%"=="1" goto :have
 
-echo [!] æ‰€æœ‰ä¸‹è½½æºå‡å¤±è´¥ï¼ˆæœ¬æœºç½‘ç»œå—é™ï¼‰ã€‚è¯·æ‰‹åŠ¨ä¸‹è½½åæ”¾å…¥ bin\ ç›®å½•ï¼š
+echo [!] ËùÓĞÏÂÔØÔ´¾ùÊ§°Ü£¨±¾»úÍøÂçÊÜÏŞ£©¡£ÇëÊÖ¶¯ÏÂÔØºó·ÅÈë bin\ Ä¿Â¼£º
 echo     https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-windows-amd64.exe
-echo     ä¸‹è½½å®Œæˆåé‡æ–°è¿è¡Œæœ¬è„šæœ¬å³å¯ã€‚
+echo     ÏÂÔØÍê³ÉºóÖØĞÂÔËĞĞ±¾½Å±¾¼´¿É¡£
 pause
 exit /b 1
 
 :trydl
 set "SRC=%~1"
 if exist "%CFD%" del /f "%CFD%" >nul 2>&1
-echo   - å°è¯•ï¼š%SRC%
+echo   - ³¢ÊÔ£º%SRC%
 where curl.exe >nul 2>&1 && (
   curl.exe -L --max-time 120 -o "%CFD%" "%SRC%" >nul 2>&1
 ) || (
   powershell -NoProfile -Command "Invoke-WebRequest -Uri '%SRC%' -OutFile '%CFD%' -TimeoutSec 120 -ErrorAction SilentlyContinue" >nul 2>&1
 )
-if exist "%CFD%" ( set "OK=1" & echo     [OK] ä¸‹è½½æˆåŠŸ & goto :eof )
+if exist "%CFD%" ( set "OK=1" & echo     [OK] ÏÂÔØ³É¹¦ & goto :eof )
 exit /b 1
 
 :have
-REM ===== è¯»å–æ˜¯å¦å·²é…ç½®å›ºå®šåŸŸå =====
+REM ===== ¶ÁÈ¡ÊÇ·ñÒÑÅäÖÃ¹Ì¶¨ÓòÃû =====
 set "TN="
 if exist "bin\.tunnel_name" ( set /p TN=<"bin\.tunnel_name" )
 
-REM ===== ç”¨ PowerShell åŒ…è£…å¯åŠ¨ï¼šå®æ—¶æå–åœ°å€ã€å†™æ—¥å¿—ã€è‡ªåŠ¨å¤åˆ¶å‰ªè´´æ¿ =====
+REM ===== ÓÃ PowerShell °ü×°Æô¶¯£ºÊµÊ±ÌáÈ¡µØÖ·¡¢Ğ´ÈÕÖ¾¡¢×Ô¶¯¸´ÖÆ¼ôÌù°å =====
 if defined TN (
   echo ============================================================
-  echo   å›ºå®šåŸŸåæ¨¡å¼ï¼ˆåœ°å€è‡ªåŠ¨å¤åˆ¶å‰ªè´´æ¿ï¼Œè¯¦è§ å¤–ç½‘æ—¥å¿—.logï¼‰
+  echo   ¹Ì¶¨ÓòÃûÄ£Ê½£¨µØÖ·×Ô¶¯¸´ÖÆ¼ôÌù°å£¬Ïê¼û ÍâÍøÈÕÖ¾.log£©
   echo ============================================================
-  powershell -NoProfile -ExecutionPolicy Bypass -File å¤–ç½‘_éš§é“.ps1 -Mode named -TunnelName "%TN%"
+  powershell -NoProfile -ExecutionPolicy Bypass -File ÍâÍø_ËíµÀ.ps1 -Mode named -TunnelName "%TN%"
 ) else (
   echo ============================================================
-  echo   ä¸´æ—¶åœ°å€æ¨¡å¼ï¼ˆåœ°å€è‡ªåŠ¨å¤åˆ¶å‰ªè´´æ¿ï¼Œè¯¦è§ ä¸´æ—¶åœ°å€.logï¼‰
-  echo   å¯åŠ¨åå¯ç›´æ¥ Ctrl+V å‘ç»™å®¢æˆ·ï¼›é‡å¯ä¼šå˜ã€‚
+  echo   ÁÙÊ±µØÖ·Ä£Ê½£¨µØÖ·×Ô¶¯¸´ÖÆ¼ôÌù°å£¬Ïê¼û ÁÙÊ±µØÖ·.log£©
+  echo   Æô¶¯ºó¿ÉÖ±½Ó Ctrl+V ·¢¸ø¿Í»§£»ÖØÆô»á±ä¡£
   echo ============================================================
-  powershell -NoProfile -ExecutionPolicy Bypass -File å¤–ç½‘_éš§é“.ps1 -Mode quick -Port %PORT%
+  powershell -NoProfile -ExecutionPolicy Bypass -File ÍâÍø_ËíµÀ.ps1 -Mode quick -Port %PORT%
 )
 pause

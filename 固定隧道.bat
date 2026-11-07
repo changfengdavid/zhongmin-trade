@@ -1,86 +1,86 @@
-ï»¿@echo off
-chcp 65001 >nul
+@echo off
+chcp 936 >nul
 setlocal EnableDelayedExpansion
 set "ROOT=G:\ZhongMinWebsite"
 set "BIN=%ROOT%\bin"
 set "CF=%BIN%\cloudflared.exe"
 set "TUN=zhongmin"
-set "DOMAINFILE=%ROOT%\åŸŸå.txt"
+set "DOMAINFILE=%ROOT%\ÓòÃû.txt"
 set "CFHOME=%USERPROFILE%\.cloudflared"
 set "CRED=%CFHOME%\cert.pem"
 cd /d "%ROOT%"
 
 echo ============================================================
-echo   ä¸­æ—»å®˜ç½‘ - å¤–ç½‘è®¿é—®
+echo   ÖĞ•F¹ÙÍø - ÍâÍø·ÃÎÊ
 echo ============================================================
 echo.
-echo [è¯´æ˜] Cloudflare å›ºå®šç½‘å€å¿…é¡»ç»‘å®š"ä½ è‡ªå·±æ‹¥æœ‰çš„åŸŸå"ï¼ˆçº¦ 30 å…ƒ/å¹´ï¼‰ã€‚
-echo   å…è´¹æ–¹æ¡ˆåªèƒ½æ‹¿åˆ°ä¼šå˜åŒ–çš„ä¸´æ—¶åœ°å€ï¼ˆxxxx.trycloudflare.comï¼‰ã€‚
+echo [ËµÃ÷] Cloudflare ¹Ì¶¨ÍøÖ·±ØĞë°ó¶¨"Äã×Ô¼ºÓµÓĞµÄÓòÃû"£¨Ô¼ 30 Ôª/Äê£©¡£
+echo   Ãâ·Ñ·½°¸Ö»ÄÜÄÃµ½»á±ä»¯µÄÁÙÊ±µØÖ·£¨xxxx.trycloudflare.com£©¡£
 echo.
 if not exist "%CF%" (
-  echo [X] ç¼ºå°‘ cloudflared.exeï¼ˆåº”åœ¨ %BIN%ï¼‰
+  echo [X] È±ÉÙ cloudflared.exe£¨Ó¦ÔÚ %BIN%£©
   pause & exit /b 1
 )
 
-REM ç¡®ä¿æœ¬æœºå®˜ç½‘åœ¨ 8080 è¿è¡Œ
+REM È·±£±¾»ú¹ÙÍøÔÚ 8080 ÔËĞĞ
 netstat -ano 2>nul | findstr /r ":8080 " >nul
 if errorlevel 1 (
-  echo [!] å®˜ç½‘æœªè¿è¡Œï¼Œæ­£åœ¨å¯åŠ¨...
-  if exist "%ROOT%\å¯åŠ¨ç½‘ç«™.bat" ( start "" "%ROOT%\å¯åŠ¨ç½‘ç«™.bat" )
+  echo [!] ¹ÙÍøÎ´ÔËĞĞ£¬ÕıÔÚÆô¶¯...
+  if exist "%ROOT%\Æô¶¯ÍøÕ¾.bat" ( start "" "%ROOT%\Æô¶¯ÍøÕ¾.bat" )
   timeout /t 5 >nul
 )
 
-REM è¯»å–åŸŸå
+REM ¶ÁÈ¡ÓòÃû
 set "MYDOMAIN="
 if exist "%DOMAINFILE%" (
   for /f "usebackq delims=" %%a in ("%DOMAINFILE%") do if not defined MYDOMAIN set "MYDOMAIN=%%a"
 )
 
 if "%MYDOMAIN%"=="" (
-  echo [!] æœªé…ç½®åŸŸåï¼ˆæ²¡æœ‰ %DOMAINFILE% æˆ–å†…å®¹ä¸ºç©ºï¼‰ã€‚
+  echo [!] Î´ÅäÖÃÓòÃû£¨Ã»ÓĞ %DOMAINFILE% »òÄÚÈİÎª¿Õ£©¡£
   echo.
-  echo   ç°åœ¨ä¸¤ç§é€‰æ‹©ï¼š
-  echo     A. ç«‹åˆ»å…è´¹å¯¹å¤– â€”â€” ä¸´æ—¶åœ°å€ï¼Œéš§é“é‡å¯ä¼šå˜ï¼ˆæœ¬å·¥å…·å°†è‡ªåŠ¨èµ°ä¸´æ—¶éš§é“ï¼‰
-  echo     B. æ°¸ä¹…å›ºå®šç½‘å€ â€”â€” å…ˆä¹°åŸŸåï¼ˆçº¦ 30 å…ƒ/å¹´ï¼‰ï¼ŒæŠŠåŸŸåå†™è¿› %DOMAINFILE% å†è¿è¡Œæœ¬å·¥å…·
+  echo   ÏÖÔÚÁ½ÖÖÑ¡Ôñ£º
+  echo     A. Á¢¿ÌÃâ·Ñ¶ÔÍâ ¡ª¡ª ÁÙÊ±µØÖ·£¬ËíµÀÖØÆô»á±ä£¨±¾¹¤¾ß½«×Ô¶¯×ßÁÙÊ±ËíµÀ£©
+  echo     B. ÓÀ¾Ã¹Ì¶¨ÍøÖ· ¡ª¡ª ÏÈÂòÓòÃû£¨Ô¼ 30 Ôª/Äê£©£¬°ÑÓòÃûĞ´½ø %DOMAINFILE% ÔÙÔËĞĞ±¾¹¤¾ß
   echo.
   pause
-  echo [A] å¯åŠ¨ä¸´æ—¶éš§é“...
+  echo [A] Æô¶¯ÁÙÊ±ËíµÀ...
   echo.
-  if exist "%ROOT%\å¤–ç½‘_è‡ªåŠ¨.bat" ( call "%ROOT%\å¤–ç½‘_è‡ªåŠ¨.bat" ) else ( start "ä¸­æ—»ä¸´æ—¶éš§é“" cmd /k ""%CF%" tunnel --url http://localhost:8080 --no-autoupdate" )
+  if exist "%ROOT%\ÍâÍø_×Ô¶¯.bat" ( call "%ROOT%\ÍâÍø_×Ô¶¯.bat" ) else ( start "ÖĞ•FÁÙÊ±ËíµÀ" cmd /k ""%CF%" tunnel --url http://localhost:8080 --no-autoupdate" )
   exit /b 0
 )
 
-echo [OK] ä½¿ç”¨è‡ªæœ‰åŸŸåï¼š%MYDOMAIN%
+echo [OK] Ê¹ÓÃ×ÔÓĞÓòÃû£º%MYDOMAIN%
 echo.
 
-REM 1. ç™»å½• Cloudflareï¼ˆä¸€æ¬¡æ€§ï¼‰
+REM 1. µÇÂ¼ Cloudflare£¨Ò»´ÎĞÔ£©
 if not exist "%CRED%" (
-  echo [1] é¦–æ¬¡éœ€ç™»å½• Cloudflareï¼ˆæµè§ˆå™¨æˆæƒï¼‰...
+  echo [1] Ê×´ÎĞèµÇÂ¼ Cloudflare£¨ä¯ÀÀÆ÷ÊÚÈ¨£©...
   pause
   "%CF%" login
-  if errorlevel 1 ( echo [X] ç™»å½•å¤±è´¥ï¼Œè¯·é‡è¯• & pause & exit /b 1 )
-  echo [OK] ç™»å½•æˆåŠŸ
-) else ( echo [OK] å·²ç™»å½• Cloudflare )
+  if errorlevel 1 ( echo [X] µÇÂ¼Ê§°Ü£¬ÇëÖØÊÔ & pause & exit /b 1 )
+  echo [OK] µÇÂ¼³É¹¦
+) else ( echo [OK] ÒÑµÇÂ¼ Cloudflare )
 
-REM 2. åˆ›å»ºå‘½åéš§é“
+REM 2. ´´½¨ÃüÃûËíµÀ
 "%CF%" tunnel list 2>nul | findstr /i "%TUN%" >nul
 if errorlevel 1 (
-  echo [2] åˆ›å»ºå‘½åéš§é“ %TUN% ...
+  echo [2] ´´½¨ÃüÃûËíµÀ %TUN% ...
   "%CF%" tunnel create %TUN%
-  if errorlevel 1 ( echo [X] éš§é“åˆ›å»ºå¤±è´¥ & pause & exit /b 1 )
-) else ( echo [OK] å‘½åéš§é“å·²å­˜åœ¨ )
+  if errorlevel 1 ( echo [X] ËíµÀ´´½¨Ê§°Ü & pause & exit /b 1 )
+) else ( echo [OK] ÃüÃûËíµÀÒÑ´æÔÚ )
 
-REM 3. ç»‘å®šå›ºå®šå­åŸŸå
+REM 3. °ó¶¨¹Ì¶¨×ÓÓòÃû
 set "HOST=www.%MYDOMAIN%"
 "%CF%" tunnel route list 2>nul | findstr /i "%HOST%" >nul
 if errorlevel 1 (
-  echo [3] ç»‘å®šå›ºå®šç½‘å€ %HOST% ...
+  echo [3] °ó¶¨¹Ì¶¨ÍøÖ· %HOST% ...
   "%CF%" tunnel route dns %TUN% %HOST%
-  if errorlevel 1 ( echo [!] ç»‘å®šå¤±è´¥ï¼ˆè¯¥åŸŸåæ˜¯å¦å·²æ¥å…¥ Cloudflareï¼Ÿï¼‰ )
-) else ( echo [OK] å›ºå®šç½‘å€å·²ç»‘å®š )
+  if errorlevel 1 ( echo [!] °ó¶¨Ê§°Ü£¨¸ÃÓòÃûÊÇ·ñÒÑ½ÓÈë Cloudflare£¿£© )
+) else ( echo [OK] ¹Ì¶¨ÍøÖ·ÒÑ°ó¶¨ )
 
-REM 4. ç”Ÿæˆé…ç½®å¹¶å¯åŠ¨
-echo [4] ç”Ÿæˆé…ç½®å¹¶å¯åŠ¨éš§é“...
+REM 4. Éú³ÉÅäÖÃ²¢Æô¶¯
+echo [4] Éú³ÉÅäÖÃ²¢Æô¶¯ËíµÀ...
 if not exist "%CFHOME%" mkdir "%CFHOME%"
 (
   echo tunnel: %TUN%
@@ -95,17 +95,17 @@ if not errorlevel 1 (
   taskkill /f /im cloudflared.exe >nul 2>&1
   timeout /t 2 >nul
 )
-start "ä¸­æ—»å›ºå®šéš§é“" cmd /k ""%CF%" tunnel run"
+start "ÖĞ•F¹Ì¶¨ËíµÀ" cmd /k ""%CF%" tunnel run"
 timeout /t 10 >nul
 
 echo.
 echo ============================================================
-echo   å›ºå®šå¤–ç½‘ç½‘å€ï¼š https://%HOST%/
-echo   åå°ï¼š       https://%HOST%/admin/
+echo   ¹Ì¶¨ÍâÍøÍøÖ·£º https://%HOST%/
+echo   ºóÌ¨£º       https://%HOST%/admin/
 echo ============================================================
-powershell -NoProfile -ExecutionPolicy Bypass -Command "$p='%ROOT%\å›ºå®šåœ°å€.txt'; $c=@('å®˜ç½‘ï¼šhttps://%HOST%/','åå°ï¼šhttps://%HOST%/admin/ ï¼ˆé»˜è®¤å¯†ç  admin123ï¼Œä¸Šçº¿è¯·ä¿®æ”¹ï¼‰') -join [Environment]::NewLine; [System.IO.File]::WriteAllText($p,$c,[System.Text.UTF8Encoding]::new($true))"
-powershell -NoProfile -ExecutionPolicy Bypass -Command "Set-Clipboard -Value @('å®˜ç½‘ï¼šhttps://%HOST%/','åå°ï¼šhttps://%HOST%/admin/') -join [Environment]::NewLine"
-echo [OK] åœ°å€å·²ä¿å­˜åˆ° å›ºå®šåœ°å€.txt å¹¶å¤åˆ¶åˆ°å‰ªè´´æ¿
-echo è¯·ä¿æŒâ€œä¸­æ—»å›ºå®šéš§é“â€çª—å£å¸¸å¼€ã€‚
+powershell -NoProfile -ExecutionPolicy Bypass -Command "$p='%ROOT%\¹Ì¶¨µØÖ·.txt'; $c=@('¹ÙÍø£ºhttps://%HOST%/','ºóÌ¨£ºhttps://%HOST%/admin/ £¨Ä¬ÈÏÃÜÂë admin123£¬ÉÏÏßÇëĞŞ¸Ä£©') -join [Environment]::NewLine; [System.IO.File]::WriteAllText($p,$c,[System.Text.UTF8Encoding]::new($true))"
+powershell -NoProfile -ExecutionPolicy Bypass -Command "Set-Clipboard -Value @('¹ÙÍø£ºhttps://%HOST%/','ºóÌ¨£ºhttps://%HOST%/admin/') -join [Environment]::NewLine"
+echo [OK] µØÖ·ÒÑ±£´æµ½ ¹Ì¶¨µØÖ·.txt ²¢¸´ÖÆµ½¼ôÌù°å
+echo Çë±£³Ö¡°ÖĞ•F¹Ì¶¨ËíµÀ¡±´°¿Ú³£¿ª¡£
 echo.
 pause

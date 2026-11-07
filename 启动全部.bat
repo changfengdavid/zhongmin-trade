@@ -1,12 +1,12 @@
-锘緻echo off
-chcp 65001 >nul
+@echo off
+chcp 936 >nul
 cd /d "%~dp0"
 
-REM 鍚姩瀹樼綉鏈嶅姟锛堝悗鍙扮獥鍙ｏ級
-start "涓椈瀹樼綉鏈嶅姟" cmd /c "%~dp0server.bat"
+REM 启动官网服务（后台窗口）
+start "中旻官网服务" cmd /c "%~dp0server.bat"
 
-REM 绋嶅�欏啀鎷夎捣鍥哄畾澶栫綉闅ч亾锛堝懡鍚嶉毀閬擄紝鍥哄畾瀛愬煙鍚嶏級
+REM 稍候再拉起固定外网隧道（命名隧道，固定子域名）
 timeout /t 2 /nobreak >nul
-start "涓椈鍥哄畾闅ч亾" cmd /c "%~dp0鍥哄畾闅ч亾.bat"
+start "中旻固定隧道" cmd /c "%~dp0固定隧道.bat"
 
 exit

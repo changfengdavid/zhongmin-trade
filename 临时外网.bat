@@ -1,22 +1,22 @@
-ï»¿@echo off
-chcp 65001 >nul
+@echo off
+chcp 936 >nul
 cd /d "%~dp0"
 
-REM ===== ç«¯å£éœ€ä¸Ž server.bat / å¯åŠ¨ç½‘ç«™.bat ä¿æŒä¸€è‡´ =====
+REM ===== ¶Ë¿ÚÐèÓë server.bat / Æô¶¯ÍøÕ¾.bat ±£³ÖÒ»ÖÂ =====
 set PORT=8080
 set "CFD=bin\cloudflared.exe"
 
 echo ============================================================
-echo   ä¸­æ—»é—¨æˆ· Â· ä¸´æ—¶å¤–ç½‘åœ°å€ï¼ˆæœ€å¿«å¯¹å¤–ï¼Œå…è´¦å·ã€å…ä¹°åŸŸåï¼‰
-echo   ç”¨é€”ï¼šçŽ°åœ¨å°±å‘ç»™å®¢æˆ·çœ‹æ•ˆæžœï¼Œåœ°å€å½¢å¦‚ xxx.trycloudflared.com
-echo   æ³¨æ„ï¼šè¿™æ˜¯ä¸´æ—¶åœ°å€ï¼Œæ¯æ¬¡é‡è¿žä¼šå˜ï¼›
-echo         æƒ³å›ºå®šæˆ zhongmin-trade.comï¼Œè§ READMEâ€œæ–¹å¼ 2â€ä¹°åŸŸååŽç»‘å®š
+echo   ÖÐ•FÃÅ»§ ¡¤ ÁÙÊ±ÍâÍøµØÖ·£¨×î¿ì¶ÔÍâ£¬ÃâÕËºÅ¡¢ÃâÂòÓòÃû£©
+echo   ÓÃÍ¾£ºÏÖÔÚ¾Í·¢¸ø¿Í»§¿´Ð§¹û£¬µØÖ·ÐÎÈç xxx.trycloudflared.com
+echo   ×¢Òâ£ºÕâÊÇÁÙÊ±µØÖ·£¬Ã¿´ÎÖØÁ¬»á±ä£»
+echo         Ïë¹Ì¶¨³É zhongmin-trade.com£¬¼û README¡°·½Ê½ 2¡±ÂòÓòÃûºó°ó¶¨
 echo ============================================================
 echo.
 
-REM ===== é¦–æ¬¡è¿è¡Œè‡ªåŠ¨ä¸‹è½½ cloudflaredï¼ˆå¤šé•œåƒå…œåº•ï¼Œä»…ç¼ºå¤±æ—¶ï¼‰=====
+REM ===== Ê×´ÎÔËÐÐ×Ô¶¯ÏÂÔØ cloudflared£¨¶à¾µÏñ¶µµ×£¬½öÈ±Ê§Ê±£©=====
 if exist "%CFD%" goto :have
-echo [1/2] é¦–æ¬¡éœ€ä¸‹è½½éš§é“å·¥å…· cloudflaredï¼ˆçº¦ 30MBï¼‰ï¼Œè‡ªåŠ¨å°è¯•å¤šä¸ªä¸‹è½½æº...
+echo [1/2] Ê×´ÎÐèÏÂÔØËíµÀ¹¤¾ß cloudflared£¨Ô¼ 30MB£©£¬×Ô¶¯³¢ÊÔ¶à¸öÏÂÔØÔ´...
 set "OK=0"
 call :trydl "https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-windows-amd64.exe"
 if "%OK%"=="1" goto :have
@@ -31,30 +31,30 @@ if "%OK%"=="1" goto :have
 call :trydl "https://github.moeyy.xyz/https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-windows-amd64.exe"
 if "%OK%"=="1" goto :have
 
-echo [!] æ‰€æœ‰ä¸‹è½½æºå‡å¤±è´¥ï¼ˆæœ¬æœºç½‘ç»œå—é™ï¼‰ã€‚è¯·æ‰‹åŠ¨ä¸‹è½½åŽæ”¾å…¥ bin\ ç›®å½•ï¼š
+echo [!] ËùÓÐÏÂÔØÔ´¾ùÊ§°Ü£¨±¾»úÍøÂçÊÜÏÞ£©¡£ÇëÊÖ¶¯ÏÂÔØºó·ÅÈë bin\ Ä¿Â¼£º
 echo     https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-windows-amd64.exe
-echo     ä¸‹è½½å®ŒæˆåŽé‡æ–°åŒå‡»æœ¬è„šæœ¬å³å¯ã€‚
+echo     ÏÂÔØÍê³ÉºóÖØÐÂË«»÷±¾½Å±¾¼´¿É¡£
 pause
 exit /b 1
 
 :trydl
 set "SRC=%~1"
 if exist "%CFD%" del /f "%CFD%" >nul 2>&1
-echo   - å°è¯•ï¼š%SRC%
+echo   - ³¢ÊÔ£º%SRC%
 where curl.exe >nul 2>&1 && (
   curl.exe -L --max-time 120 -o "%CFD%" "%SRC%" >nul 2>&1
 ) || (
   powershell -NoProfile -Command "Invoke-WebRequest -Uri '%SRC%' -OutFile '%CFD%' -TimeoutSec 120 -ErrorAction SilentlyContinue" >nul 2>&1
 )
-if exist "%CFD%" ( set "OK=1" & echo     [OK] ä¸‹è½½æˆåŠŸ & goto :eof )
+if exist "%CFD%" ( set "OK=1" & echo     [OK] ÏÂÔØ³É¹¦ & goto :eof )
 exit /b 1
 
 :have
-REM ===== å¯åŠ¨ä¸´æ—¶éš§é“ï¼ˆæ— éœ€ç™»å½•ã€æ— éœ€åŸŸåï¼‰=====
-echo [2/2] å¯åŠ¨ä¸´æ—¶éš§é“ï¼ˆè¯·ç¡®ä¿ å¯åŠ¨ç½‘ç«™.bat å·²åœ¨è¿è¡Œï¼Œæœ¬æœº 8080 åœ¨è·‘ï¼‰...
-echo     ç¨å€™ä¸‹æ–¹ä¼šæ˜¾ç¤º https://xxxx.trycloudflared.com
-echo     å¤åˆ¶è¯¥åœ°å€å‘ç»™å®¢æˆ·ï¼Œå³å¯å¤–ç½‘è®¿é—®ä½ çš„å®˜ç½‘ã€‚
-echo     ï¼ˆä¿æŒæ­¤çª—å£å¼€ç€ï¼›æŒ‰ Ctrl+C åœæ­¢å¤–ç½‘è®¿é—®ï¼‰
+REM ===== Æô¶¯ÁÙÊ±ËíµÀ£¨ÎÞÐèµÇÂ¼¡¢ÎÞÐèÓòÃû£©=====
+echo [2/2] Æô¶¯ÁÙÊ±ËíµÀ£¨ÇëÈ·±£ Æô¶¯ÍøÕ¾.bat ÒÑÔÚÔËÐÐ£¬±¾»ú 8080 ÔÚÅÜ£©...
+echo     ÉÔºòÏÂ·½»áÏÔÊ¾ https://xxxx.trycloudflared.com
+echo     ¸´ÖÆ¸ÃµØÖ··¢¸ø¿Í»§£¬¼´¿ÉÍâÍø·ÃÎÊÄãµÄ¹ÙÍø¡£
+echo     £¨±£³Ö´Ë´°¿Ú¿ª×Å£»°´ Ctrl+C Í£Ö¹ÍâÍø·ÃÎÊ£©
 echo.
 "%CFD%" tunnel --url http://localhost:%PORT%
 pause
