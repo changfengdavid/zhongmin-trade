@@ -1,0 +1,894 @@
+{
+  "site": {
+    "name": {
+      "zh": "青岛中旻国际贸易有限公司",
+      "en": "Qingdao Zhongmin International Trade Co., Ltd."
+    },
+    "shortName": {
+      "zh": "中旻国际",
+      "en": "Zhongmin Int'l"
+    },
+    "logo": "",
+    "favicon": "",
+    "slogan": {
+      "zh": "链接全球贸易，成就品质生活",
+      "en": "Connecting Global Trade, Delivering Quality"
+    },
+    "intro": {
+      "zh": "青岛中旻国际贸易有限公司坐落于中国重要的沿海开放城市、世界级港口城市——青岛。公司深耕进出口贸易与国内贸易双赛道，依托青岛港的区位优势与成熟的供应链网络，为全球客户提供一站式贸易综合服务。",
+      "en": "Qingdao Zhongmin International Trade Co., Ltd. is headquartered in Qingdao, a world-class coastal port city and one of China's key hubs for international trade. We operate across both import/export and domestic markets, leveraging the location advantage of Qingdao Port and a mature supply-chain network to deliver one-stop trade services to clients worldwide."
+    },
+    "contact": {
+      "address": {
+        "zh": "中国山东省青岛市市南区香港中路 XX 号 XX 大厦 XX 层（邮编 266000）",
+        "en": "Floor XX, XX Building, No.XX Hong Kong Middle Road, Shinan District, Qingdao 266000, Shandong, China"
+      },
+      "phone": "+86-532-8888-XXXX",
+      "mobile": "+86-138-XXXX-XXXX",
+      "email": "info@zhongmin-trade.com",
+      "website": "https://www.zhongmin-trade.com",
+      "wechat": "ZhongminTrade",
+      "whatsapp": "+86-138-XXXX-XXXX",
+      "workingHours": {
+        "zh": "周一至周五 09:00 - 18:00 (GMT+8)",
+        "en": "Mon - Fri 09:00 - 18:00 (GMT+8)"
+      }
+    },
+    "social": {
+      "linkedin": "",
+      "facebook": "",
+      "twitter": "",
+      "youtube": ""
+    }
+  },
+  "banners": [
+    {
+      "image": "",
+      "title": {
+        "zh": "全球贸易，从中旻启航",
+        "en": "Global Trade Starts Here"
+      },
+      "subtitle": {
+        "zh": "进出口 + 国内贸易双轮驱动，一站式供应链服务",
+        "en": "Import / Export + Domestic Trade, One-Stop Supply Chain"
+      },
+      "button": {
+        "zh": "了解我们的服务",
+        "en": "Explore Our Services"
+      },
+      "link": "#/services"
+    },
+    {
+      "image": "",
+      "title": {
+        "zh": "品质优选，直达全球",
+        "en": "Quality Products, Delivered Worldwide"
+      },
+      "subtitle": {
+        "zh": "六大品类产品，严选货源与质量管控",
+        "en": "Six Product Categories with Rigorous Sourcing & QC"
+      },
+      "button": {
+        "zh": "浏览产品中心",
+        "en": "Browse Products"
+      },
+      "link": "#/products"
+    },
+    {
+      "image": "",
+      "title": {
+        "zh": "专业团队，值得信赖",
+        "en": "A Trusted, Professional Team"
+      },
+      "subtitle": {
+        "zh": "报关、物流、合规、金融全链路赋能",
+        "en": "Customs, Logistics, Compliance & Finance, End-to-End"
+      },
+      "button": {
+        "zh": "联系我们",
+        "en": "Contact Us"
+      },
+      "link": "#/contact"
+    }
+  ],
+  "about": {
+    "title": {
+      "zh": "关于中旻",
+      "en": "About Us"
+    },
+    "content": {
+      "zh": "青岛中旻国际贸易有限公司是一家以进出口贸易与国内贸易为核心的综合型贸易企业。我们秉持“诚信、专业、共赢”的经营理念，业务覆盖机电设备、建材五金、农产品食品、化工原料、纺织服装及日用消费品等多个领域。\n\n公司拥有一支具备国际贸易、海关事务、国际物流与供应链管理经验的复合型团队，能够为客户提供从询盘、报价、签约、采购、质检、仓储、报关、海运到结算的全流程服务。我们与国内外众多优质工厂及渠道建立了长期稳定的合作关系，致力于成为客户值得信赖的全球贸易伙伴。",
+      "en": "Qingdao Zhongmin International Trade Co., Ltd. is a comprehensive trading enterprise focused on both import/export and domestic trade. Guided by the principles of integrity, professionalism and win-win cooperation, our business spans machinery & equipment, building materials & hardware, agricultural & food products, chemicals, textiles & apparel, and consumer goods.\n\nBacked by a multidisciplinary team with expertise in international trade, customs affairs, international logistics and supply-chain management, we provide end-to-end services — from inquiry, quotation and contracting to sourcing, QC, warehousing, customs clearance, ocean freight and settlement. We have built long-term, stable partnerships with quality manufacturers and channels at home and abroad, striving to be our clients' most trusted global trade partner."
+    },
+    "vision": {
+      "zh": "成为连接中国与世界的卓越贸易桥梁",
+      "en": "To be an excellent trade bridge connecting China and the world"
+    },
+    "mission": {
+      "zh": "以专业服务降低贸易门槛，让好产品通达全球",
+      "en": "Lower the barrier to trade with expertise, and bring great products to the world"
+    },
+    "milestones": [
+      {
+        "year": "2015",
+        "text": {
+          "zh": "公司成立，开展国内贸易业务",
+          "en": "Company founded, launching domestic trade"
+        }
+      },
+      {
+        "year": "2017",
+        "text": {
+          "zh": "取得进出口经营权，拓展海外市场",
+          "en": "Obtained import/export license, expanding overseas"
+        }
+      },
+      {
+        "year": "2020",
+        "text": {
+          "zh": "建立跨境供应链服务体系",
+          "en": "Built a cross-border supply-chain service system"
+        }
+      },
+      {
+        "year": "2024",
+        "text": {
+          "zh": "服务网络覆盖 30+ 国家和地区",
+          "en": "Service network covering 30+ countries and regions"
+        }
+      }
+    ],
+    "stats": [
+      {
+        "value": "30+",
+        "label": {
+          "zh": "合作国家和地区",
+          "en": "Countries & Regions"
+        }
+      },
+      {
+        "value": "6",
+        "label": {
+          "zh": "核心产品品类",
+          "en": "Core Categories"
+        }
+      },
+      {
+        "value": "500+",
+        "label": {
+          "zh": "长期合作客户",
+          "en": "Long-term Clients"
+        }
+      },
+      {
+        "value": "10+",
+        "label": {
+          "zh": "年行业经验",
+          "en": "Years of Experience"
+        }
+      }
+    ]
+  },
+  "advantages": [
+    {
+      "icon": "globe",
+      "title": {
+        "zh": "全球供应链网络",
+        "en": "Global Supply Network"
+      },
+      "desc": {
+        "zh": "覆盖主要港口与海外渠道，货源稳定、交付高效。",
+        "en": "Covering major ports and overseas channels for stable sourcing and efficient delivery."
+      }
+    },
+    {
+      "icon": "team",
+      "title": {
+        "zh": "专业贸易团队",
+        "en": "Professional Team"
+      },
+      "desc": {
+        "zh": "精通国际贸易、海关、物流与合规的复合型人才。",
+        "en": "Multidisciplinary experts in trade, customs, logistics and compliance."
+      }
+    },
+    {
+      "icon": "quality",
+      "title": {
+        "zh": "严格质量管控",
+        "en": "Strict Quality Control"
+      },
+      "desc": {
+        "zh": "从工厂审核到出货检验，全链路质量把关。",
+        "en": "End-to-end QC from factory audit to pre-shipment inspection."
+      }
+    },
+    {
+      "icon": "service",
+      "title": {
+        "zh": "一站式服务",
+        "en": "One-Stop Service"
+      },
+      "desc": {
+        "zh": "询盘到结算全流程托管，让贸易更省心。",
+        "en": "Full-process management from inquiry to settlement."
+      }
+    },
+    {
+      "icon": "compliance",
+      "title": {
+        "zh": "合规与信用",
+        "en": "Compliance & Credit"
+      },
+      "desc": {
+        "zh": "规范报关报检，重视合规与商业信用。",
+        "en": "Standard customs clearance with strong compliance and credit."
+      }
+    },
+    {
+      "icon": "network",
+      "title": {
+        "zh": "数字化协同",
+        "en": "Digital Collaboration"
+      },
+      "desc": {
+        "zh": "订单、物流、结算在线协同，透明可追溯。",
+        "en": "Online coordination of orders, logistics and settlement, fully traceable."
+      }
+    }
+  ],
+  "productCategories": [
+    {
+      "id": "machinery",
+      "name": {
+        "zh": "机电设备",
+        "en": "Machinery & Equipment"
+      }
+    },
+    {
+      "id": "building",
+      "name": {
+        "zh": "建材五金",
+        "en": "Building Materials & Hardware"
+      }
+    },
+    {
+      "id": "agri",
+      "name": {
+        "zh": "农产品食品",
+        "en": "Agricultural & Food"
+      }
+    },
+    {
+      "id": "chemical",
+      "name": {
+        "zh": "化工原料",
+        "en": "Chemicals"
+      }
+    },
+    {
+      "id": "textile",
+      "name": {
+        "zh": "纺织服装",
+        "en": "Textiles & Apparel"
+      }
+    },
+    {
+      "id": "consumer",
+      "name": {
+        "zh": "日用消费品",
+        "en": "Consumer Goods"
+      }
+    }
+  ],
+  "products": [
+    {
+      "id": "p-mach-001",
+      "category": "machinery",
+      "name": {
+        "zh": "数控机床设备",
+        "en": "CNC Machine Tools"
+      },
+      "cover": "",
+      "images": [],
+      "summary": {
+        "zh": "高精度数控加工中心，适用于精密制造。",
+        "en": "High-precision CNC machining centers for precision manufacturing."
+      },
+      "description": {
+        "zh": "我们提供多种规格的数控机床与加工中心，广泛应用于汽车零部件、模具、航空航天及通用机械制造领域，支持 OEM 与定制化配置。",
+        "en": "We supply CNC machines and machining centers in various specifications, widely used in automotive parts, mold-making, aerospace and general machinery, with OEM and custom configurations."
+      },
+      "specs": [
+        {
+          "k": {
+            "zh": "加工精度",
+            "en": "Accuracy"
+          },
+          "v": {
+            "zh": "±0.005 mm",
+            "en": "±0.005 mm"
+          }
+        },
+        {
+          "k": {
+            "zh": "主轴转速",
+            "en": "Spindle Speed"
+          },
+          "v": {
+            "zh": "8000-12000 rpm",
+            "en": "8000-12000 rpm"
+          }
+        },
+        {
+          "k": {
+            "zh": "认证",
+            "en": "Certification"
+          },
+          "v": {
+            "zh": "CE / ISO9001",
+            "en": "CE / ISO9001"
+          }
+        }
+      ],
+      "featured": true
+    },
+    {
+      "id": "p-mach-002",
+      "category": "machinery",
+      "name": {
+        "zh": "小型发电机组",
+        "en": "Generator Sets"
+      },
+      "cover": "",
+      "images": [],
+      "summary": {
+        "zh": "静音节能柴油/发电机组，适用于工矿与家用。",
+        "en": "Silent, energy-saving diesel/gas generator sets for industry and home."
+      },
+      "description": {
+        "zh": "提供 5kW 至 1000kW 多功率段发电机组，具备低噪音、低油耗、稳定输出等特点，远销东南亚、中东及非洲市场。",
+        "en": "Ranging from 5kW to 1000kW, our generator sets feature low noise, low fuel consumption and stable output, exported to Southeast Asia, the Middle East and Africa."
+      },
+      "specs": [
+        {
+          "k": {
+            "zh": "功率范围",
+            "en": "Power Range"
+          },
+          "v": {
+            "zh": "5-1000 kW",
+            "en": "5-1000 kW"
+          }
+        },
+        {
+          "k": {
+            "zh": "噪音",
+            "en": "Noise"
+          },
+          "v": {
+            "zh": "≤ 75 dB",
+            "en": "≤ 75 dB"
+          }
+        }
+      ],
+      "featured": false
+    },
+    {
+      "id": "p-build-001",
+      "category": "building",
+      "name": {
+        "zh": "铝合金型材",
+        "en": "Aluminum Profiles"
+      },
+      "cover": "",
+      "images": [],
+      "summary": {
+        "zh": "建筑与工业用高品质铝合金型材。",
+        "en": "High-quality aluminum profiles for construction and industry."
+      },
+      "description": {
+        "zh": "涵盖门窗、幕墙、工业框架等系列铝合金型材，表面处理可选阳极氧化、粉末喷涂、电泳等，符合国际标准。",
+        "en": "Covering window/door, curtain wall and industrial frame profiles, with anodizing, powder coating and electrophoresis finishes meeting international standards."
+      },
+      "specs": [
+        {
+          "k": {
+            "zh": "材质",
+            "en": "Alloy"
+          },
+          "v": {
+            "zh": "6063 / 6061",
+            "en": "6063 / 6061"
+          }
+        },
+        {
+          "k": {
+            "zh": "表面处理",
+            "en": "Finish"
+          },
+          "v": {
+            "zh": "氧化/喷涂",
+            "en": "Anodized / Coated"
+          }
+        }
+      ],
+      "featured": true
+    },
+    {
+      "id": "p-build-002",
+      "category": "building",
+      "name": {
+        "zh": "PVC 管材管件",
+        "en": "PVC Pipes & Fittings"
+      },
+      "cover": "",
+      "images": [],
+      "summary": {
+        "zh": "给排水与电工套管系统解决方案。",
+        "en": "Water supply, drainage and conduit system solutions."
+      },
+      "description": {
+        "zh": "提供建筑给排水、电工套管等 PVC 管材及配套管件，耐腐蚀、寿命长，适用于民用与市政工程。",
+        "en": "PVC pipes and fittings for plumbing, drainage and electrical conduit — corrosion-resistant and long-lasting for residential and municipal projects."
+      },
+      "specs": [
+        {
+          "k": {
+            "zh": "口径",
+            "en": "Diameter"
+          },
+          "v": {
+            "zh": "20-315 mm",
+            "en": "20-315 mm"
+          }
+        }
+      ],
+      "featured": false
+    },
+    {
+      "id": "p-agri-001",
+      "category": "agri",
+      "name": {
+        "zh": "脱水蔬菜制品",
+        "en": "Dehydrated Vegetables"
+      },
+      "cover": "",
+      "images": [],
+      "summary": {
+        "zh": "出口级脱水蔬菜，锁鲜锁营养。",
+        "en": "Export-grade dehydrated vegetables, freshness locked in."
+      },
+      "description": {
+        "zh": "包括脱水葱、蒜、胡萝卜、土豆等，采用低温干燥工艺，保留色泽与营养，供应食品加工业与餐饮渠道。",
+        "en": "Including dehydrated scallion, garlic, carrot and potato, processed by low-temperature drying to retain color and nutrition for food processing and catering."
+      },
+      "specs": [
+        {
+          "k": {
+            "zh": "水分",
+            "en": "Moisture"
+          },
+          "v": {
+            "zh": "≤ 8%",
+            "en": "≤ 8%"
+          }
+        },
+        {
+          "k": {
+            "zh": "认证",
+            "en": "Certification"
+          },
+          "v": {
+            "zh": "HACCP / ISO22000",
+            "en": "HACCP / ISO22000"
+          }
+        }
+      ],
+      "featured": false
+    },
+    {
+      "id": "p-agri-002",
+      "category": "agri",
+      "name": {
+        "zh": "坚果休闲食品",
+        "en": "Nuts & Snacks"
+      },
+      "cover": "",
+      "images": [],
+      "summary": {
+        "zh": "精选坚果与休闲零食，健康美味。",
+        "en": "Selected nuts and snacks, healthy and delicious."
+      },
+      "description": {
+        "zh": "巴旦木、腰果、核桃及混合坚果礼盒，支持自有品牌与贴牌代工，远销欧美商超。",
+        "en": "Almonds, cashews, walnuts and mixed-nut gift boxes, available for private label and OEM, supplied to supermarkets in Europe and America."
+      },
+      "specs": [
+        {
+          "k": {
+            "zh": "包装",
+            "en": "Packaging"
+          },
+          "v": {
+            "zh": "定制礼盒",
+            "en": "Custom Gift Box"
+          }
+        }
+      ],
+      "featured": false
+    },
+    {
+      "id": "p-chem-001",
+      "category": "chemical",
+      "name": {
+        "zh": "基础化工原料",
+        "en": "Basic Chemicals"
+      },
+      "cover": "",
+      "images": [],
+      "summary": {
+        "zh": "钛白粉、纯碱等大宗化工原料供应。",
+        "en": "Bulk chemicals such as titanium dioxide and soda ash."
+      },
+      "description": {
+        "zh": "提供钛白粉、纯碱、烧碱等基础化工原料，稳定的上游资源与完善的危化品物流体系。",
+        "en": "Supplying titanium dioxide, soda ash, caustic soda and other basic chemicals, with stable upstream resources and a sound hazardous-chemical logistics system."
+      },
+      "specs": [
+        {
+          "k": {
+            "zh": "规格",
+            "en": "Grade"
+          },
+          "v": {
+            "zh": "工业级/食品级",
+            "en": "Industrial / Food"
+          }
+        }
+      ],
+      "featured": false
+    },
+    {
+      "id": "p-textile-001",
+      "category": "textile",
+      "name": {
+        "zh": "功能性面料",
+        "en": "Functional Fabrics"
+      },
+      "cover": "",
+      "images": [],
+      "summary": {
+        "zh": "防水、透气、抗菌等功能性纺织面料。",
+        "en": "Waterproof, breathable and antibacterial functional textiles."
+      },
+      "description": {
+        "zh": "面向户外、运动与工装的功能性面料，具备防水、透气、抗紫外线、抗菌等特性，支持来样定制。",
+        "en": "Functional fabrics for outdoor, sports and workwear — waterproof, breathable, UV-resistant and antibacterial, with custom development from samples."
+      },
+      "specs": [
+        {
+          "k": {
+            "zh": "克重",
+            "en": "Weight"
+          },
+          "v": {
+            "zh": "120-300 gsm",
+            "en": "120-300 gsm"
+          }
+        }
+      ],
+      "featured": false
+    },
+    {
+      "id": "p-consumer-001",
+      "category": "consumer",
+      "name": {
+        "zh": "家居日用百货",
+        "en": "Home & Daily Goods"
+      },
+      "cover": "",
+      "images": [],
+      "summary": {
+        "zh": "厨房、收纳、清洁等家居日用商品。",
+        "en": "Kitchen, storage and cleaning daily-use goods."
+      },
+      "description": {
+        "zh": "涵盖厨房用品、收纳整理、清洁工具等家居日用百货，支持商超集采与跨境电商一件代发。",
+        "en": "Covering kitchenware, storage and cleaning tools, supporting supermarket sourcing and cross-border e-commerce dropshipping."
+      },
+      "specs": [
+        {
+          "k": {
+            "zh": "起订量",
+            "en": "MOQ"
+          },
+          "v": {
+            "zh": "可议",
+            "en": "Negotiable"
+          }
+        }
+      ],
+      "featured": false
+    }
+  ],
+  "services": [
+    {
+      "icon": "export",
+      "title": {
+        "zh": "出口贸易",
+        "en": "Export Trade"
+      },
+      "desc": {
+        "zh": "为中国制造链接全球买家，提供出口全流程服务。",
+        "en": "Connecting global buyers with Chinese manufacturing, full export process."
+      },
+      "points": [
+        {
+          "zh": "海外客户开发与询盘对接",
+          "en": "Overseas client development & inquiry matching"
+        },
+        {
+          "zh": "报价、合同与信用证结算",
+          "en": "Quotation, contracts & L/C settlement"
+        },
+        {
+          "zh": "订舱、报关与海运安排",
+          "en": "Booking, customs clearance & ocean freight"
+        }
+      ]
+    },
+    {
+      "icon": "import",
+      "title": {
+        "zh": "进口贸易",
+        "en": "Import Trade"
+      },
+      "desc": {
+        "zh": "将海外优质货源引入国内市场。",
+        "en": "Bringing quality overseas supply into the domestic market."
+      },
+      "points": [
+        {
+          "zh": "海外供应商寻源与审核",
+          "en": "Overseas supplier sourcing & audit"
+        },
+        {
+          "zh": "进口清关与税费筹划",
+          "en": "Import clearance & tax planning"
+        },
+        {
+          "zh": "国内分销与仓储配送",
+          "en": "Domestic distribution & warehousing"
+        }
+      ]
+    },
+    {
+      "icon": "domestic",
+      "title": {
+        "zh": "国内贸易",
+        "en": "Domestic Trade"
+      },
+      "desc": {
+        "zh": "覆盖全国的内贸采销与渠道服务。",
+        "en": "Nationwide domestic procurement, sales and channel services."
+      },
+      "points": [
+        {
+          "zh": "工厂直采与集采服务",
+          "en": "Factory-direct & consolidated sourcing"
+        },
+        {
+          "zh": "全国分销网络对接",
+          "en": "National distribution network"
+        },
+        {
+          "zh": "账期与供应链金融支持",
+          "en": "Credit terms & supply-chain finance"
+        }
+      ]
+    },
+    {
+      "icon": "logistics",
+      "title": {
+        "zh": "国际物流",
+        "en": "International Logistics"
+      },
+      "desc": {
+        "zh": "海运、空运、陆运与多式联运。",
+        "en": "Ocean, air, land and multimodal transport."
+      },
+      "points": [
+        {
+          "zh": "整箱/拼箱海运",
+          "en": "FCL / LCL ocean freight"
+        },
+        {
+          "zh": "目的港清关与派送",
+          "en": "Destination clearance & delivery"
+        },
+        {
+          "zh": "仓储与保税物流",
+          "en": "Warehousing & bonded logistics"
+        }
+      ]
+    },
+    {
+      "icon": "customs",
+      "title": {
+        "zh": "报关报检",
+        "en": "Customs & Inspection"
+      },
+      "desc": {
+        "zh": "专业报关行，规范高效通关。",
+        "en": "Professional customs brokerage, compliant & efficient."
+      },
+      "points": [
+        {
+          "zh": "进出口报关单证",
+          "en": "Import/export documentation"
+        },
+        {
+          "zh": "商品归类与估价",
+          "en": "HS classification & valuation"
+        },
+        {
+          "zh": "检验检疫协调",
+          "en": "Inspection & quarantine coordination"
+        }
+      ]
+    },
+    {
+      "icon": "finance",
+      "title": {
+        "zh": "供应链金融",
+        "en": "Supply Chain Finance"
+      },
+      "desc": {
+        "zh": "为企业贸易提供灵活的资金方案。",
+        "en": "Flexible financing solutions for trade."
+      },
+      "points": [
+        {
+          "zh": "订单融资与赊销支持",
+          "en": "Order financing & credit sales"
+        },
+        {
+          "zh": "汇率避险与结算优化",
+          "en": "FX hedging & settlement optimization"
+        },
+        {
+          "zh": "应收账款管理",
+          "en": "Receivables management"
+        }
+      ]
+    }
+  ],
+  "news": [
+    {
+      "id": "n-001",
+      "date": "2026-09-15",
+      "category": {
+        "zh": "公司动态",
+        "en": "Company News"
+      },
+      "title": {
+        "zh": "中旻国际亮相广交会，斩获多国订单",
+        "en": "Zhongmin Debuts at Canton Fair, Secures Multi-Country Orders"
+      },
+      "cover": "",
+      "summary": {
+        "zh": "在第 136 届广交会上，中旻国际展示了六大品类产品，与来自东南亚、中东、欧洲的客商达成多项合作意向。",
+        "en": "At the 136th Canton Fair, Zhongmin showcased six product categories and reached cooperation intentions with buyers from Southeast Asia, the Middle East and Europe."
+      },
+      "content": {
+        "zh": "第 136 届中国进出口商品交易会（广交会）圆满落幕。中旻国际携机电设备、建材五金、农产品食品等六大品类亮相，凭借稳定的货源与专业的服务团队，吸引了大量海外客商驻足洽谈，现场达成多项合作意向，进一步拓展了全球贸易版图。",
+        "en": "The 136th China Import and Export Fair (Canton Fair) concluded successfully. Zhongmin presented six product categories including machinery, building materials and food products. With stable sourcing and a professional team, the company attracted numerous overseas buyers and reached multiple cooperation intentions, further expanding its global trade footprint."
+      }
+    },
+    {
+      "id": "n-002",
+      "date": "2026-07-02",
+      "category": {
+        "zh": "行业洞察",
+        "en": "Industry Insight"
+      },
+      "title": {
+        "zh": "2026 上半年外贸形势分析与应对策略",
+        "en": "H1 2026 Foreign Trade Outlook & Strategy"
+      },
+      "cover": "",
+      "summary": {
+        "zh": "在全球供应链重构背景下，外贸企业应如何降本增效、布局多元市场。",
+        "en": "How trading companies can cut costs, boost efficiency and diversify markets amid global supply-chain restructuring."
+      },
+      "content": {
+        "zh": "2026 年上半年，全球贸易格局持续演变。建议外贸企业：一是拓展东南亚、中东、拉美等新兴市场以分散风险；二是强化供应链数字化协同，提升交付透明度；三是善用供应链金融工具优化资金效率。中旻国际将持续以专业服务为客户护航。",
+        "en": "In H1 2026, the global trade landscape keeps evolving. We advise trading companies to: diversify into emerging markets such as Southeast Asia, the Middle East and Latin America; strengthen digital supply-chain collaboration for transparency; and leverage supply-chain finance to optimize cash flow. Zhongmin remains committed to serving clients with expertise."
+      }
+    },
+    {
+      "id": "n-003",
+      "date": "2026-04-20",
+      "category": {
+        "zh": "服务升级",
+        "en": "Service Update"
+      },
+      "title": {
+        "zh": "中旻国际上线数字化贸易协同平台",
+        "en": "Zhongmin Launches Digital Trade Collaboration Platform"
+      },
+      "cover": "",
+      "summary": {
+        "zh": "客户可在线跟踪订单、物流与结算进度，贸易流程更透明。",
+        "en": "Clients can now track orders, logistics and settlement online for full transparency."
+      },
+      "content": {
+        "zh": "为提升客户服务体验，中旻国际上线数字化贸易协同平台，客户可实时查看订单状态、物流轨迹与结算进度，实现贸易全流程在线协同与可追溯，让每一笔合作都更安心、更高效。",
+        "en": "To elevate client experience, Zhongmin launched a digital trade collaboration platform where clients can track order status, logistics and settlement in real time — enabling fully traceable, online collaboration across the entire trade process."
+      }
+    }
+  ],
+  "partners": [
+    { "name": "XX 港口物流集团", "logo": "" },
+    { "name": "XX 机电制造有限公司", "logo": "" },
+    { "name": "XX 食品进出口商会", "logo": "" },
+    { "name": "XX 化工供应链", "logo": "" },
+    { "name": "XX 纺织工贸公司", "logo": "" },
+    { "name": "XX 海外渠道伙伴", "logo": "" }
+  ],
+  "certificates": [
+    {
+      "name": {
+        "zh": "进出口经营权",
+        "en": "Import/Export License"
+      },
+      "image": ""
+    },
+    {
+      "name": {
+        "zh": "对外贸易经营者备案",
+        "en": "Foreign Trade Operator Record"
+      },
+      "image": ""
+    },
+    {
+      "name": {
+        "zh": "海关注册登记证书",
+        "en": "Customs Registration"
+      },
+      "image": ""
+    },
+    {
+      "name": {
+        "zh": "ISO 9001 质量体系",
+        "en": "ISO 9001 Quality"
+      },
+      "image": ""
+    },
+    {
+      "name": {
+        "zh": "海关 AEO 高级认证",
+        "en": "Customs AEO"
+      },
+      "image": ""
+    },
+    {
+      "name": {
+        "zh": "CE / SGS 产品认证",
+        "en": "CE / SGS Certification"
+      },
+      "image": ""
+    }
+  ],
+  "seo": {
+    "keywords": {
+      "zh": "青岛中旻国际贸易,进出口贸易,国内贸易,外贸公司,供应链服务",
+      "en": "Qingdao Zhongmin, international trade, import export, domestic trade, supply chain"
+    },
+    "description": {
+      "zh": "青岛中旻国际贸易有限公司——专业进出口与国内贸易综合服务商，提供一站式供应链解决方案。",
+      "en": "Qingdao Zhongmin International Trade Co., Ltd. — a professional import/export and domestic trade service provider offering one-stop supply-chain solutions."
+    }
+  }
+}

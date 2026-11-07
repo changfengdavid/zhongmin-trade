@@ -1,0 +1,21 @@
+# Render.com 部署配置（Blueprint）
+# 说明：若用 Render 的 "Blueprint" 自动方式，本文件会被读取；
+#      若用控制台手动 "New Web Service" 创建，则忽略本文件、按界面填写即可。
+# 详细步骤见「免费云托管_Render部署指南.md」。
+
+services:
+  - type: web
+    name: zhongmin-portal
+    runtime: node
+    plan: free                 # 免费实例：15 分钟无访问休眠，约 1 分钟冷启动
+    region: singapore          # 新加坡节点，对中国大陆访问较快；若报错可改为 oregon
+    branch: main
+    autoDeploy: true           # 每次推送 main 分支自动重新部署
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /api/config
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: ADMIN_PASSWORD   # 仅首次启动生效（之后以 data/admin.json 为准）
+        value: admin123

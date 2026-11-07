@@ -1,0 +1,10 @@
+# 云端部署时排除：本地工具与体积大的二进制不在云上运行
+bin/
+node_modules/
+*.log
+临时地址.log
+Koyeb地址.txt
+发布日志.txt
+*.bat
+*.ps1
+del_marker.txt

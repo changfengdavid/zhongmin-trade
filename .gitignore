@@ -1,0 +1,22 @@
+# 依赖与本地二进制（部署时云端会自动安装依赖）
+node_modules/
+bin/
+
+# 日志与临时文件
+*.log
+*.tmp
+临时地址.log
+Koyeb地址.txt
+固定地址.txt
+域名.txt
+_t.html
+_c.json
+
+# 凭据/会话（不要推到仓库，密码用 Render 环境变量 ADMIN_PASSWORD）
+data/admin.json
+data/tokens.json
+
+# 系统文件
+.DS_Store
+Thumbs.db
+desktop.ini

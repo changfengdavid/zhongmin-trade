@@ -1,0 +1,13 @@
+{
+  "name": "zhongmin-website",
+  "version": "1.0.0",
+  "description": "青岛中旻国际贸易有限公司 可配置双语公司网站门户（外贸+内贸）",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "multer": "^2.5.0"
+  }
+}
