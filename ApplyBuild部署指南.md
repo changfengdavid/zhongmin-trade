@@ -1,3 +1,7 @@
+> ⚠️ **【已废弃 · 2026-11-08】** Apply.Build 目前仅对**欧洲地区用户**开放注册（页面提示 “currently only available to users in Europe”），国内无法注册。请勿再按本文操作，改用 **`CloudflarePages部署指南.md`**。本文仅作历史记录保留。
+
+---
+
 # 中旻官网 · 免费云部署指南（Apply.Build）
 
 > 适用时间：2026 年 11 月起

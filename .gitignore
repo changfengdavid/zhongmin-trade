@@ -20,3 +20,6 @@ data/tokens.json
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# 静态站构建产物（Cloudflare Pages 每次部署会用 build-static.js 自动重建，无需提交）
+dist/

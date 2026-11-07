@@ -481,12 +481,24 @@ function toast(msg) {
   clearTimeout(el._t); el._t = setTimeout(() => el.classList.remove('show'), 2200);
 }
 
+/* ---------------- 配置加载（兼容本地后端 / 纯静态托管） ---------------- */
+async function loadConfig() {
+  // 1) 有后端时优先走 API（本地启动 server.js 的场景）
+  try {
+    const res = await fetch('/api/config', { cache: 'no-store' });
+    if (res.ok) return await res.json();
+  } catch (e) { /* 静态托管无后端，忽略后降级 */ }
+
+  // 2) 纯静态托管（Cloudflare Pages 等）：读同目录 config.json
+  const res2 = await fetch('config.json', { cache: 'no-store' });
+  if (!res2.ok) throw new Error('config');
+  return await res2.json();
+}
+
 /* ---------------- 初始化 ---------------- */
 async function init() {
   try {
-    const res = await fetch('/api/config');
-    if (!res.ok) throw new Error('config');
-    CONFIG = await res.json();
+    CONFIG = await loadConfig();
   } catch (e) {
     $('#app').innerHTML = `<div class="center-state"><div class="big">⚠️</div><p>${lang === 'zh' ? '无法加载站点配置，请确认后端服务已启动。' : 'Failed to load site config. Please ensure the server is running.'}</p></div>`;
     return;

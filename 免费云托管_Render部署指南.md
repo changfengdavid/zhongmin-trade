@@ -1,3 +1,7 @@
+> ⚠️ **【已废弃 · 2026-11-08】** Render 免费档现要求**强制绑定 Visa/MasterCard 信用卡**（$1 预授权），无卡无法创建实例。请勿再按本文操作，改用 **`CloudflarePages部署指南.md`**。本文仅作历史记录保留。
+
+---
+
 # 免费云托管部署指南（Render，固定网址 xxx.onrender.com）
 
 > 目标：把公司官网放到免费的 Render 云上，得到一个**永久固定**的网址 `https://你的服务名.onrender.com`。
