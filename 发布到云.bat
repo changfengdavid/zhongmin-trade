@@ -63,7 +63,7 @@ if not defined CURURL (
     echo [*] 尚未绑定 GitHub 仓库
     echo     到 https://github.com/new 新建空仓库（不要勾 README / License）
     echo     复制仓库地址粘贴到这里，https 或 ssh 格式都行，例如：
-    echo       https://github.com/changfengdavid/zhongmin.git
+    echo       https://github.com/changfengdavid/zhongmin-trade.git
     echo.
     set /p "REMOTE=仓库地址: "
     if "!REMOTE!"=="" (
