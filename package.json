@@ -9,5 +9,8 @@
   "dependencies": {
     "express": "^4.19.2",
     "multer": "^2.5.0"
+  },
+  "engines": {
+    "node": ">=20"
   }
 }

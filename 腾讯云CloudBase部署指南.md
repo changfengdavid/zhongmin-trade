@@ -36,7 +36,7 @@
 
 ## 二、部署云托管服务
 
-本仓库根目录已放好 `Dockerfile`（Node 20 + `npm install` + `node server.js`，监听 80 端口），无需你改任何代码。
+本仓库根目录已放好 `Dockerfile`（Node 20 + `npm install` + `node server.js`，监听 8080 端口），无需你改任何代码。
 
 1. 控制台左侧 → **云托管** → **新建服务**
 2. 服务名称：`zhongmin-portal`
@@ -102,7 +102,7 @@
 A：说明没走 Dockerfile 构建，而是用了平台的自动识别。改成「Dockerfile 构建」重新部署。
 
 **Q：打开是白屏 / 502？**
-A：多半是容器端口没填 80。云托管要求服务监听 80 端口（`server.js` 已支持 `PORT` 环境变量，Dockerfile 里设了 `PORT=80`）。
+A：多半是容器端口没填 80。云托管要求服务监听 8080 端口（`server.js` 已支持 `PORT` 环境变量，Dockerfile 里设了 `PORT=80`）。
 
 **Q：为什么每次打开都慢十几秒？**
 A：最小副本数 = 0 的代价（无访问时实例被回收）。想快就把最小副本改成 1，但费用会涨到约 ¥21/月，免费额度撑不住。

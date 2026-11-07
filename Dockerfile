@@ -1,5 +1,6 @@
 # 青岛中旻国际贸易有限公司官网 —— 容器镜像
-# 用于腾讯云开发 CloudBase 云托管 / 任意 Docker 平台部署
+# 用于 CloudBase 云托管 / Apply.Build / 任意 Docker 平台部署
+# 端口说明：默认 8080，若平台注入 PORT 环境变量则以注入值为准
 FROM node:20-alpine
 
 WORKDIR /app
@@ -12,7 +13,7 @@ RUN npm install --omit=dev --no-audit --no-fund
 COPY . .
 
 ENV NODE_ENV=production
-ENV PORT=80
-EXPOSE 80
+ENV PORT=8080
+EXPOSE 8080
 
 CMD ["node", "server.js"]

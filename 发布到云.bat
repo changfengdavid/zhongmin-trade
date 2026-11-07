@@ -5,7 +5,7 @@ set "ROOT=G:\ZhongMinWebsite"
 cd /d "%ROOT%"
 
 echo ============================================================
-echo   中旻官网 - 一键发布到 Render 云
+echo   中旻官网 - 一键发布到云（Apply.Build / 任意 Git 平台）
 echo ============================================================
 echo.
 
@@ -118,7 +118,7 @@ if exist "%USERPROFILE%\.ssh\id_ed25519.pub" (
     type "%USERPROFILE%\.ssh\id_ed25519.pub"
 ) else (
     echo     本机还没有密钥，正在生成...
-    ssh-keygen -t ed25519 -f "%USERPROFILE%\.ssh\id_ed25519" -N "" -C "zhongmin-render" >nul 2>&1
+    ssh-keygen -t ed25519 -f "%USERPROFILE%\.ssh\id_ed25519" -N "" -C "zhongmin-cloud" >nul 2>&1
     type "%USERPROFILE%\.ssh\id_ed25519.pub"
 )
 echo ------------------------------------------------------------
@@ -159,7 +159,7 @@ if errorlevel 1 (
 echo.
 echo ============================================================
 echo   [OK] 推送完成
-echo   Render 会自动重新部署，约 1-2 分钟后线上即为最新内容
+echo   云平台会自动重新部署，约 1-2 分钟后线上即为最新内容
 echo ============================================================
 echo.
 pause
